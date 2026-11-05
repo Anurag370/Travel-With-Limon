@@ -96,20 +96,21 @@ export function Navbar() {
               <nav className="mt-8 flex flex-col gap-2">
                 {navigation.map((item) => (
                   <SheetClose
-                    key={item.name}
-                    render={
-                      <Link
-                        href={item.href}
-                        className="flex items-center justify-between rounded-lg px-4 py-3 font-medium transition-colors hover:bg-orange-100 hover:text-brand-orange"
-                      />
-                    }
-                  >
-                    {item.name}
+  key={item.name}
+  nativeButton={false}
+  render={
+    <Link
+      href={item.href}
+      className="flex items-center justify-between rounded-lg px-4 py-3 font-medium transition-colors hover:bg-orange-100 hover:text-brand-orange"
+    />
+  }
+>
+  {item.name}
 
-                    {item.name === "Destinations" && (
-                      <ChevronDown size={16} />
-                    )}
-                  </SheetClose>
+  {item.name === "Destinations" && (
+    <ChevronDown size={16} />
+  )}
+</SheetClose>
                 ))}
               </nav>
 
