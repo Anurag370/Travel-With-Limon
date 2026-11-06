@@ -36,6 +36,7 @@ export default async function DestinationPage({
       <Navbar />
 
       <main className="min-h-screen bg-[#fff9ef]">
+      
         {/* Destination Hero */}
         <section className="relative isolate flex min-h-[480px] items-end overflow-hidden bg-brand-green md:min-h-[600px]">
           <Image

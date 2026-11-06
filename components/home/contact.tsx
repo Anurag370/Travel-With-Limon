@@ -10,7 +10,7 @@ import {
   Send,
   ChevronDown,
 } from "lucide-react";
-
+const WHATSAPP_BUSINESS_NUMBER = "+918768790090";
 const faqs = [
   {
     question: "How can I book a trip?",
@@ -130,23 +130,25 @@ export function Contact() {
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const message = [
-      "Hello Travel with Limon!",
-      "",
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Subject: ${form.subject}`,
-      `Message: ${form.message}`,
-    ].join("\n");
+  const message = [
+    "Hello Travel with Limon! 👋",
+    "",
+    "I have a new travel enquiry.",
+    "",
+    `Name: ${form.name.trim()}`,
+    `Email: ${form.email.trim()}`,
+    `Subject: ${form.subject}`,
+    `Message: ${form.message.trim()}`,
+    "",
+    "Please share more details. Thank you!",
+  ].join("\n");
 
-    const whatsappUrl = `https://wa.me/918768790090?text=${encodeURIComponent(
-      message
-    )}`;
+  const whatsappUrl = `https://wa.me/${+918768790090}?text=${encodeURIComponent(message)}`;
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-  };
+  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+};
 
   return (
     <main className="bg-[#fff9ef] text-neutral-800">
@@ -322,7 +324,7 @@ export function Contact() {
               <div className="mt-7 space-y-6">
                 {/* WhatsApp */}
                 <a
-                  href="https://wa.me/918768790090"
+                  href={`https://wa.me/${8768790090}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex gap-4"

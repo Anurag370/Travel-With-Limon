@@ -1,4 +1,6 @@
+
 import Link from "next/link";
+import Image from "next/image";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 
@@ -29,9 +31,24 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-orange-100 bg-[#fffdf8]/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 lg:px-10">
 
-        <Logo />
+        {/* Desktop Logo */}
+        <Link href="/" className="flex shrink-0 items-center">
+          <div className="relative h-11 w-11 overflow-hidden rounded-full">
+            <Image
+              src="/logo.png"
+              alt="Travel with Limon"
+              fill
+              priority
+              sizes="44px"
+              className="object-cover"
+            />
+          </div>
 
-        
+          <span className="ml-2 font-heading text-xl font-bold text-neutral-900">
+            Travel with Limon
+          </span>
+        </Link>
+
         <nav className="hidden items-center gap-8 md:flex">
           {navigation.map((item) => (
             <Link
@@ -64,7 +81,8 @@ export function Navbar() {
           <Button
             nativeButton={false}
             render={<Link href="/contact" />}
-            className="rounded-full bg-brand-orange px-6 font-semibold text-white hover:bg-orange-700">
+            className="rounded-full bg-brand-orange px-6 font-semibold text-white hover:bg-orange-700"
+          >
             Book Now
           </Button>
         </div>
@@ -96,21 +114,21 @@ export function Navbar() {
               <nav className="mt-8 flex flex-col gap-2">
                 {navigation.map((item) => (
                   <SheetClose
-  key={item.name}
-  nativeButton={false}
-  render={
-    <Link
-      href={item.href}
-      className="flex items-center justify-between rounded-lg px-4 py-3 font-medium transition-colors hover:bg-orange-100 hover:text-brand-orange"
-    />
-  }
->
-  {item.name}
+                    key={item.name}
+                    nativeButton={false}
+                    render={
+                      <Link
+                        href={item.href}
+                        className="flex items-center justify-between rounded-lg px-4 py-3 font-medium transition-colors hover:bg-orange-100 hover:text-brand-orange"
+                      />
+                    }
+                  >
+                    {item.name}
 
-  {item.name === "Destinations" && (
-    <ChevronDown size={16} />
-  )}
-</SheetClose>
+                    {item.name === "Destinations" && (
+                      <ChevronDown size={16} />
+                    )}
+                  </SheetClose>
                 ))}
               </nav>
 
@@ -129,7 +147,8 @@ export function Navbar() {
                 <Button
                   nativeButton={false}
                   render={<Link href="/contact" />}
-                  className="w-full rounded-full bg-brand-orange text-white hover:bg-orange-700">
+                  className="w-full rounded-full bg-brand-orange text-white hover:bg-orange-700"
+                >
                   Book Your Trip
                 </Button>
               </div>
