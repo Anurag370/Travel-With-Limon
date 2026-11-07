@@ -68,7 +68,7 @@ export function Contact() {
   };
 
   return (
-    <main className="bg-[#fff9ef] text-neutral-800" id="contact">
+    <main className="scroll-mt-16 bg-[#fff9ef] text-neutral-800" id="contact">
       {/* Contact Hero */}
       <section className="relative isolate flex min-h-[300px] items-center overflow-hidden bg-[#073b34] sm:min-h-[370px]">
         <div

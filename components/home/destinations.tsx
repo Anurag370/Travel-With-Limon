@@ -8,7 +8,7 @@ export function Destinations() {
   return (
     <section
       id="destinations"
-      className="bg-[#fff9ef] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
+      className="scroll-mt-16 bg-[#fff9ef] px-4 py-16 sm:px-6 sm:py-20 lg:px-10 lg:py-24"
     >
       <div className="mx-auto max-w-[1400px]">
 

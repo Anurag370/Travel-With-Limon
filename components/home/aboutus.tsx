@@ -46,7 +46,7 @@ const highlights = [
 
 export function AboutUs() {
   return (
-    <main className="bg-[#fff9ef] text-neutral-800" id="about">
+    <main className="scroll-mt-16 bg-[#fff9ef] text-neutral-800" id="about">
       {/* Page hero */}
       <section className="relative isolate flex min-h-[310px] items-center overflow-hidden bg-[#073b34] sm:min-h-[390px]">
         <Image
@@ -205,7 +205,7 @@ export function AboutUs() {
             planning an experience you will always remember.
           </p>
           <Link
-            href="/contact"
+            href="/#contact"
             className="mt-7 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand-orange px-7 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-700"
           >
             Plan Your Trip <ArrowRight size={17} />
