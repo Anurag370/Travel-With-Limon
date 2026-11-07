@@ -1,6 +1,7 @@
 "use client";
-
 import { useState } from "react";
+
+import { SocialLinks } from '../shared/socials'
 import {
   Clock3,
   Mail,
@@ -34,90 +35,6 @@ const faqs = [
   },
 ];
 
-const instagramUrl =
-  "https://www.instagram.com/travel_with_limon58?srtk=MW83d2FreTEycWRhag==";
-
-const facebookUrl =
-  "https://www.facebook.com/travelwithlimon58";
-
-/* Instagram SVG Icon */
-function InstagramIcon({ className = "h-6 w-6" }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle
-        cx="17.5"
-        cy="6.5"
-        r="0.8"
-        fill="currentColor"
-        stroke="none"
-      />
-    </svg>
-  );
-}
-
-/* Facebook SVG Icon */
-function FacebookIcon({ className = "h-6 w-6" }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2v-2c0-.9.3-1.5 1.6-1.5h1.7V3.2c-.3 0-1.4-.2-2.6-.2-2.6 0-4.4 1.6-4.4 4.5v2.1H7v3.2h2.8V21h3.7Z" />
-    </svg>
-  );
-}
-
-/* Reusable Social Links */
-function SocialLinks({ footer = false }: { footer?: boolean }) {
-  return (
-    <div className="flex gap-3">
-      <a
-        href={instagramUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Follow Travel With Limon on Instagram"
-        title="Instagram - Travel With Limon"
-        className={
-          footer
-            ? "flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E4405F]"
-            : "flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 text-[#E4405F] transition-all duration-300 hover:-translate-y-1 hover:bg-[#E4405F] hover:text-white hover:shadow-lg"
-        }
-      >
-        <InstagramIcon className="h-6 w-6" />
-      </a>
-
-      <a
-        href={facebookUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Follow Travel With Limon on Facebook"
-        title="Facebook - Travel With Limon"
-        className={
-          footer
-            ? "flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1877F2]"
-            : "flex h-12 w-12 items-center justify-center rounded-xl bg-orange-50 text-[#1877F2] transition-all duration-300 hover:-translate-y-1 hover:bg-[#1877F2] hover:text-white hover:shadow-lg"
-        }
-      >
-        <FacebookIcon className="h-6 w-6" />
-      </a>
-    </div>
-  );
-}
 
 export function Contact() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -130,28 +47,28 @@ export function Contact() {
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const message = [
-    "Hello Travel with Limon! 👋",
-    "",
-    "I have a new travel enquiry.",
-    "",
-    `Name: ${form.name.trim()}`,
-    `Email: ${form.email.trim()}`,
-    `Subject: ${form.subject}`,
-    `Message: ${form.message.trim()}`,
-    "",
-    "Please share more details. Thank you!",
-  ].join("\n");
+    const message = [
+      "Hello Travel with Limon! 👋",
+      "",
+      "I have a new travel enquiry.",
+      "",
+      `Name: ${form.name.trim()}`,
+      `Email: ${form.email.trim()}`,
+      `Subject: ${form.subject}`,
+      `Message: ${form.message.trim()}`,
+      "",
+      "Please share more details. Thank you!",
+    ].join("\n");
 
-  const whatsappUrl = `https://wa.me/${+918768790090}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${+918768790090}?text=${encodeURIComponent(message)}`;
 
-  window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-};
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  };
 
   return (
-    <main className="bg-[#fff9ef] text-neutral-800">
+    <main className="bg-[#fff9ef] text-neutral-800" id="contact">
       {/* Contact Hero */}
       <section className="relative isolate flex min-h-[300px] items-center overflow-hidden bg-[#073b34] sm:min-h-[370px]">
         <div
@@ -200,8 +117,8 @@ export function Contact() {
               </h2>
 
               <p className="mt-2 text-sm leading-6 text-neutral-500">
-                Fill in the details below and continue the conversation with
-                us on WhatsApp.
+                Fill in the details below and continue the conversation with us
+                on WhatsApp.
               </p>
             </div>
 
@@ -304,8 +221,8 @@ export function Contact() {
               </button>
 
               <p className="text-center text-xs leading-5 text-neutral-500">
-                Your message will open in WhatsApp Business. You can review
-                it before sending.
+                Your message will open in WhatsApp Business. You can review it
+                before sending.
               </p>
             </form>
           </div>
@@ -440,8 +357,8 @@ export function Contact() {
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-neutral-600">
-                Explore our travel stories, discover beautiful destinations,
-                and stay connected with Travel With Limon.
+                Explore our travel stories, discover beautiful destinations, and
+                stay connected with Travel With Limon.
               </p>
 
               <div className="mt-5">
@@ -547,132 +464,7 @@ export function Contact() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#00382f] px-5 pb-5 pt-12 text-white sm:px-8 lg:px-10">
-        <div className="mx-auto grid max-w-[1400px] gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
-          {/* Brand */}
-          <div>
-            <a href="/" className="inline-block">
-              <span className="font-heading text-2xl font-bold tracking-wide text-white">
-                Travel <span className="text-brand-orange">with Limon</span>
-              </span>
-            </a>
 
-            <p className="mt-4 max-w-xs text-sm leading-6 text-white/75">
-              Discover India with curated tours, local experiences, and
-              unforgettable journeys.
-            </p>
-
-            <div className="mt-5">
-              <SocialLinks footer />
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="font-semibold text-white">Quick Links</h3>
-
-            <ul className="mt-4 space-y-2 text-sm text-white/75">
-              <li>
-                <a className="transition hover:text-orange-300" href="/">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition hover:text-orange-300"
-                  href="/#destinations"
-                >
-                  Destinations
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition hover:text-orange-300"
-                  href="/packages"
-                >
-                  Packages
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition hover:text-orange-300"
-                  href="/about"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  className="transition hover:text-orange-300"
-                  href="/contact"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Destinations */}
-          <div>
-            <h3 className="font-semibold text-white">Destinations</h3>
-
-            <ul className="mt-4 space-y-2 text-sm text-white/75">
-              {[
-                "Kalimpong",
-                "Darjeeling",
-                "North sikkim",
-                "East sikkim",
-                "Darjeeling offbeat",
-                "Kalimpong offbeat",
-              ].map((place) => (
-                <li key={place}>
-                  <a
-                    className="transition hover:text-orange-300"
-                    href="/#destinations"
-                  >
-                    {place}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Get in Touch */}
-          <div>
-            <h3 className="font-semibold text-white">Get in Touch</h3>
-
-            <ul className="mt-4 space-y-3 text-sm text-white/75">
-              <li>
-                <a
-                  className="transition hover:text-orange-300"
-                  href="tel:+918001242166"
-                >
-                  ☎ +91 80012 42166
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="break-all transition hover:text-orange-300"
-                  href="mailto:travelwithlimon58@gmail.com"
-                >
-                  ✉ travelwithlimon58@gmail.com
-                </a>
-              </li>
-
-              <li className="flex gap-2">
-                <span>📍</span>
-                <span>Falakata, Alipurduar, West Bengal</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="mx-auto mt-10 max-w-[1400px] border-t border-white/20 pt-4 text-center text-xs text-white/65">
-          © 2026 Travel With Limon. All rights reserved.
-        </div>
-      </footer>
     </main>
   );
 }

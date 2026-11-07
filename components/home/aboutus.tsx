@@ -46,7 +46,7 @@ const highlights = [
 
 export function AboutUs() {
   return (
-    <main className="bg-[#fff9ef] text-neutral-800">
+    <main className="bg-[#fff9ef] text-neutral-800" id="about">
       {/* Page hero */}
       <section className="relative isolate flex min-h-[310px] items-center overflow-hidden bg-[#073b34] sm:min-h-[390px]">
         <Image

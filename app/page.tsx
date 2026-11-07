@@ -4,6 +4,7 @@ import { TravelSearch } from "@/components/home/travel-search";
 import { Destinations } from "@/components/home/destinations";
 import { AboutUs } from "@/components/home/aboutus";
 import { Contact } from "@/components/home/contact";
+import Footer from "@/components/layout/footer";
 
 export default function Home() {
   return (
@@ -14,16 +15,10 @@ export default function Home() {
         <Hero />
         <TravelSearch />
         <Destinations />
+        <AboutUs />
+        <Contact />
+        <Footer/>
 
-        {/* About Us section */}
-        <div id="about-us" className="scroll-mt-16">
-          <AboutUs />
-        </div>
-
-        {/* Contact section */}
-        <div id="contact" className="scroll-mt-16">
-          <Contact />
-        </div>
       </main>
     </>
   );
