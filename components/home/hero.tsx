@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[470px] items-center overflow-hidden bg-[#09243c] md:min-h-[540px]">
+    <section id="home" className="relative isolate flex min-h-[470px] items-center overflow-hidden bg-[#09243c] md:min-h-[540px]">
 
       {/* Background Image */}
       <Image
@@ -65,17 +65,11 @@ export function Hero() {
 
             <Button
               nativeButton={false}
-              render={
-                <a
-                  href="https://www.youtube.com/results?search_query=Udaipur+travel+video"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
+              render={<Link href="/#destinations" />}
               variant="outline"
               className="h-12 rounded-full border-2 border-white/80 bg-transparent px-6 text-sm font-semibold text-white transition-all hover:bg-white hover:text-neutral-900 sm:px-7">
-              <Play className="mr-2 h-4 w-4 fill-current" />
-              Watch Video
+              <MapPin className="mr-2 h-4 w-4" />
+              View Destinations
             </Button>
 
           </div>

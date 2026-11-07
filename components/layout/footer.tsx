@@ -44,14 +44,14 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a className="transition hover:text-orange-300" href="/about">
+                <Link className="transition hover:text-orange-300" href="/#about">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="transition hover:text-orange-300" href="/contact">
+                <Link className="transition hover:text-orange-300" href="/#contact">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
