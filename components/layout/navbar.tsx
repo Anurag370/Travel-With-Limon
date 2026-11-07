@@ -19,12 +19,15 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 
+
 const navigation = [
   { name: "Home", href: "/", active: true },
   { name: "Destinations", href: "/#destinations" },
+  { name: "Reviews", href: "/reviews" },
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
+
 
 export function Navbar() {
   return (
