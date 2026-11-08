@@ -1,13 +1,11 @@
 
 export interface DestinationGallery {
-  title: string;
   cover: string;
   images: string[];
 }
 
 export const destinationGallery: Record<string, DestinationGallery> = {
   darjeeling: {
-    title: "Darjeeling",
     cover: "/destinations/darjeeling/drj4.jpeg",
     images: [
       "/destinations/darjeeling/drj1.jpeg",
@@ -20,7 +18,6 @@ export const destinationGallery: Record<string, DestinationGallery> = {
   },
 
   darjeeling_offbeat: {
-    title: "Darjeeling Offbeat",
     cover: "/destinations/darjeeling_offbeat/drjoff1.jpeg",
     images: [
       "/destinations/darjeeling_offbeat/drjoff1.jpeg",
@@ -31,7 +28,6 @@ export const destinationGallery: Record<string, DestinationGallery> = {
   },
 
   dooars: {
-    title: "Dooars",
     cover: "/destinations/dooars/doars1.jpeg",
     images: [
       "/destinations/dooars/doars1.jpeg",
@@ -41,7 +37,6 @@ export const destinationGallery: Record<string, DestinationGallery> = {
   },
 
   east_sikkim: {
-    title: "East Sikkim",
     cover: "/destinations/east_sikkim/es1.jpeg",
     images: [
       "/destinations/east_sikkim/es1.jpeg",
@@ -50,7 +45,6 @@ export const destinationGallery: Record<string, DestinationGallery> = {
   },
 
   kalimpong: {
-    title: "Kalimpong",
     cover: "/destinations/kalimpong/kmp1.jpeg",
     images: [
       "/destinations/kalimpong/kmp1.jpeg",
@@ -61,7 +55,6 @@ export const destinationGallery: Record<string, DestinationGallery> = {
   },
 
   kalimpong_offbeat: {
-    title: "Kalimpong Offbeat",
     cover: "/destinations/kalimpong_offbeat/kmpoff1.jpeg",
     images: [
       "/destinations/kalimpong_offbeat/kmpoff1.jpeg",
@@ -71,7 +64,6 @@ export const destinationGallery: Record<string, DestinationGallery> = {
   },
 
   north_sikkim: {
-    title: "North Sikkim",
     cover: "/destinations/north_sikkim/ns1.jpeg",
     images: [
       "/destinations/north_sikkim/ns1.jpeg",

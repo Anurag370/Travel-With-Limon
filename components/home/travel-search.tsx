@@ -1,40 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 import {
   BriefcaseBusiness,
   CalendarDays,
-  Compass,
   Hotel,
   MapPin,
   Minus,
-  Plane,
   Plus,
   Search,
   Users,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
-const categories = [
-  { id: "tours", label: "Tour Packages", icon: BriefcaseBusiness },
-  { id: "hotels", label: "Hotels", icon: Hotel },
-] as const;
-
-type Category = (typeof categories)[number]["id"];
-
-const destinations = [
-  "Darjeeling",
-  "Darjeeling Offbeat",
-  "Kalimpong",
-  "Kalimpong Offbeat",
-  "North Sikkim",
-  "East Sikkim",
-  "Dooars",
-];
+import { destinations } from "@/data/destinations";
 
 export function TravelSearch() {
+  const t = useTranslations("TravelSearch");
+  const tDestinations = useTranslations("destinations");
+
+  const categories = [
+    { id: "tours", label: t("tours"), icon: BriefcaseBusiness },
+    { id: "hotels", label: t("hotels"), icon: Hotel },
+  ] as const;
+
+  type Category = (typeof categories)[number]["id"];
+
   const [category, setCategory] = useState<Category>("tours");
   const [destination, setDestination] = useState("");
   const [travelDate, setTravelDate] = useState("");
@@ -48,14 +41,6 @@ export function TravelSearch() {
     event.preventDefault();
 
     setSubmitted(true);
-
-    console.log("Travel Search:", {
-      category,
-      destination,
-      travelDate,
-      adults,
-      children,
-    });
   };
 
   const categoryLabel =
@@ -107,7 +92,7 @@ export function TravelSearch() {
               className="flex items-center gap-2 text-sm font-semibold text-neutral-800"
             >
               <MapPin className="h-4 w-4" />
-              Where to?
+              {t("whereTo")}
             </label>
 
             <select
@@ -121,12 +106,12 @@ export function TravelSearch() {
               className="h-12 w-full rounded-xl border border-neutral-200 bg-white px-3 text-sm text-neutral-800 outline-none transition focus:border-brand-orange focus:ring-2 focus:ring-orange-100"
             >
               <option value="" disabled>
-                e.g. Darjeeling, Kalimpong, Sikkim
+                {t("destinationPlaceholder")}
               </option>
 
               {destinations.map((place) => (
-                <option key={place} value={place}>
-                  {place}
+                <option key={place.slug} value={place.slug}>
+                  {tDestinations(`${place.slug}.name`)}
                 </option>
               ))}
             </select>
@@ -139,7 +124,7 @@ export function TravelSearch() {
               className="flex items-center gap-2 text-sm font-semibold text-neutral-800"
             >
               <CalendarDays className="h-4 w-4" />
-              Travel Dates
+              {t("travelDates")}
             </label>
 
             <input
@@ -159,12 +144,12 @@ export function TravelSearch() {
           <div className="space-y-2">
             <label className="flex items-center gap-2 text-sm font-semibold text-neutral-800">
               <Users className="h-4 w-4" />
-              Travelers
+              {t("travelers")}
             </label>
 
             <details className="group relative">
               <summary className="flex h-12 cursor-pointer list-none items-center justify-between rounded-xl border border-neutral-200 px-3 text-sm transition hover:border-brand-orange">
-                <span>{totalTravelers} Travelers</span>
+                <span>{t("travelersCount", { count: totalTravelers })}</span>
                 <Users className="h-4 w-4 text-neutral-500" />
               </summary>
 
@@ -172,16 +157,16 @@ export function TravelSearch() {
                 {/* Adults */}
                 <div className="flex items-center justify-between py-3">
                   <div>
-                    <p className="text-sm font-semibold">Adults</p>
+                    <p className="text-sm font-semibold">{t("adults")}</p>
                     <p className="text-xs text-neutral-500">
-                      Age 12+
+                      {t("adultsAge")}
                     </p>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
-                      aria-label="Remove adult"
+                      aria-label={t("removeAdult")}
                       disabled={adults <= 1}
                       onClick={() => setAdults((v) => Math.max(1, v - 1))}
                       className="rounded-full border p-1.5 disabled:opacity-30"
@@ -195,7 +180,7 @@ export function TravelSearch() {
 
                     <button
                       type="button"
-                      aria-label="Add adult"
+                      aria-label={t("addAdult")}
                       onClick={() => setAdults((v) => v + 1)}
                       className="rounded-full border p-1.5"
                     >
@@ -208,16 +193,16 @@ export function TravelSearch() {
 
                 <div className="flex items-center justify-between py-3">
                   <div>
-                    <p className="text-sm font-semibold">Children</p>
+                    <p className="text-sm font-semibold">{t("children")}</p>
                     <p className="text-xs text-neutral-500">
-                      Age 0–11
+                      {t("childrenAge")}
                     </p>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
-                      aria-label="Remove child"
+                      aria-label={t("removeChild")}
                       disabled={children <= 0}
                       onClick={() =>
                         setChildren((v) => Math.max(0, v - 1))
@@ -233,7 +218,7 @@ export function TravelSearch() {
 
                     <button
                       type="button"
-                      aria-label="Add child"
+                      aria-label={t("addChild")}
                       onClick={() => setChildren((v) => v + 1)}
                       className="rounded-full border p-1.5"
                     >
@@ -250,7 +235,7 @@ export function TravelSearch() {
             className="h-12 w-full rounded-xl bg-brand-orange px-6 font-semibold text-white shadow-md transition-all hover:bg-orange-700 md:min-w-[145px]"
           >
             <Search className="mr-2 h-4 w-4" />
-            Search Trips
+            {t("searchTrips")}
           </Button>
         </form>
 
@@ -261,17 +246,23 @@ export function TravelSearch() {
             className="mt-4 rounded-xl border border-orange-200 bg-orange-50 p-4"
           >
             <p className="text-sm font-semibold text-brand-green">
-              Your search preferences are ready!
+              {t("readyTitle")}
             </p>
 
             <p className="mt-1 text-sm text-neutral-700">
-              {categoryLabel} · {destination} · {travelDate} ·{" "}
-              {adults} Adults · {children} Children
+              {t("summary", {
+                category: categoryLabel ?? "",
+                destination: destination
+                  ? tDestinations(`${destination}.name`)
+                  : "",
+                date: travelDate,
+                adults,
+                children,
+              })}
             </p>
 
             <p className="mt-2 text-xs text-neutral-500">
-              This is a frontend demonstration. Live search and booking
-              require a backend integration.
+              {t("demoNote")}
             </p>
           </div>
         )}

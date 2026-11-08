@@ -1,23 +1,27 @@
 import React from 'react'
-import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 
 import { SocialLinks } from '../shared/socials'
+import { Link } from '@/i18n/navigation'
+import { destinations } from '@/data/destinations'
 
-const Footer = () => {
+const Footer = async () => {
+  const t = await getTranslations("Footer");
+  const tDestinations = await getTranslations("destinations");
+
   return (
       <footer className="bg-[#00382f] px-5 pb-5 pt-12 text-white sm:px-8 lg:px-10">
         <div className="mx-auto grid max-w-[1400px] gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
           {/* Brand */}
           <div>
-            <Link href="/" className="inline-block">
+            <Link href="/#home" className="inline-block">
               <span className="font-heading text-2xl font-bold tracking-wide text-white">
                 Travel <span className="text-brand-orange">with Limon</span>
               </span>
             </Link>
 
             <p className="mt-4 max-w-xs text-sm leading-6 text-white/75">
-              Discover India with curated tours, local experiences, and
-              unforgettable journeys.
+              {t("tagline")}
             </p>
 
             <div className="mt-5">
@@ -27,12 +31,12 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-white">Quick Links</h3>
+            <h3 className="font-semibold text-white">{t("quickLinks")}</h3>
 
             <ul className="mt-4 space-y-2 text-sm text-white/75">
               <li>
                 <Link className="transition hover:text-orange-300" href="/">
-                  Home
+                  {t("home")}
                 </Link>
               </li>
               <li>
@@ -40,17 +44,17 @@ const Footer = () => {
                   className="transition hover:text-orange-300"
                   href="/#destinations"
                 >
-                  Destinations
+                  {t("destinations")}
                 </Link>
               </li>
               <li>
                 <Link className="transition hover:text-orange-300" href="/#about">
-                  About Us
+                  {t("about")}
                 </Link>
               </li>
               <li>
                 <Link className="transition hover:text-orange-300" href="/#contact">
-                  Contact
+                  {t("contact")}
                 </Link>
               </li>
             </ul>
@@ -58,23 +62,16 @@ const Footer = () => {
 
           {/* Destinations */}
           <div>
-            <h3 className="font-semibold text-white">Destinations</h3>
+            <h3 className="font-semibold text-white">{t("destinations")}</h3>
 
             <ul className="mt-4 space-y-2 text-sm text-white/75">
-              {[
-                "Kalimpong",
-                "Darjeeling",
-                "North sikkim",
-                "East sikkim",
-                "Darjeeling offbeat",
-                "Kalimpong offbeat",
-              ].map((place) => (
-                <li key={place}>
+              {destinations.map((place) => (
+                <li key={place.slug}>
                   <Link
                     className="transition hover:text-orange-300"
-                    href="/#destinations"
+                    href={`/${place.href}`}
                   >
-                    {place}
+                    {tDestinations(`${place.slug}.name`)}
                   </Link>
                 </li>
               ))}
@@ -83,7 +80,7 @@ const Footer = () => {
 
           {/* Get in Touch */}
           <div>
-            <h3 className="font-semibold text-white">Get in Touch</h3>
+            <h3 className="font-semibold text-white">{t("getInTouch")}</h3>
 
             <ul className="mt-4 space-y-3 text-sm text-white/75">
               <li>
@@ -106,7 +103,7 @@ const Footer = () => {
 
               <li className="flex gap-2">
                 <span>📍</span>
-                <span>Falakata, Alipurduar, West Bengal</span>
+                <span>{t("location")}</span>
               </li>
             </ul>
           </div>
@@ -114,7 +111,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="mx-auto mt-10 max-w-[1400px] border-t border-white/20 pt-4 text-center text-xs text-white/65">
-          © 2026 Travel With Limon. All rights reserved.
+          {t("copyright")}
         </div>
       </footer>
   )

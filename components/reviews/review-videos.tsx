@@ -1,34 +1,18 @@
 
 import { ExternalLink } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-const reviews = [
-  {
-    id: 1,
-    title: "Traveler Experience 01",
-    destination: "Darjeeling",
-    url: "https://www.facebook.com/reel/3313951985478234",
-  },
-  {
-    id: 2,
-    title: "Traveler Experience 02",
-    destination: "North Sikkim",
-    url: "https://www.facebook.com/reel/1339349497696751",
-  },
-  {
-    id: 3,
-    title: "Traveler Experience 03",
-    destination: "Travel Memories",
-    url: "https://www.facebook.com/reel/1577373470630542",
-  },
-  {
-    id: 4,
-    title: "Traveler Experience 04",
-    destination: "Travel Memories",
-    url: "https://www.facebook.com/reel/2148471792576141",
-  },
-];
+const reviewIds = [1, 2, 3, 4] as const;
+const reviewUrls: Record<number, string> = {
+  1: "https://www.facebook.com/reel/3313951985478234",
+  2: "https://www.facebook.com/reel/1339349497696751",
+  3: "https://www.facebook.com/reel/1577373470630542",
+  4: "https://www.facebook.com/reel/2148471792576141",
+};
 
-export function ReviewVideos() {
+export async function ReviewVideos() {
+  const t = await getTranslations("Reviews");
+
   return (
     <section className="bg-[#fff9ef] px-4 py-16 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-[1200px]">
@@ -36,28 +20,33 @@ export function ReviewVideos() {
         {/* Section Heading */}
         <div className="mb-10 text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-            Real Stories • Real Experiences
+            {t("sectionEyebrow")}
           </p>
 
           <h2 className="mt-3 font-heading text-3xl font-bold text-brand-green sm:text-4xl">
-            What Our Travelers Say
+            {t("sectionTitle")}
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-neutral-600 sm:text-base">
-            Every journey creates a beautiful memory. Watch the experiences
-            shared by travelers who explored with Travel with Limon.
+            {t("sectionDescription")}
           </p>
         </div>
 
         {/* Video Grid */}
         <div className="grid gap-7 sm:grid-cols-2">
-          {reviews.map((review) => {
+          {reviewIds.map((id) => {
+            const review = t.raw(`videos.${id}`) as {
+              title: string;
+              destination: string;
+            };
+            const url = reviewUrls[id];
+
             const embedUrl =
-              `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(review.url)}&show_text=false&width=500`;
+              `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&width=500`;
 
             return (
               <article
-                key={review.id}
+                key={id}
                 className="group overflow-hidden rounded-3xl border border-orange-100 bg-white shadow-md transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* Facebook Video */}
@@ -85,10 +74,10 @@ export function ReviewVideos() {
                   </div>
 
                   <a
-                    href={review.url}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Watch ${review.title} on Facebook`}
+                    aria-label={t("watchOnFacebook", { title: review.title })}
                     className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange-50 text-brand-orange transition hover:bg-brand-orange hover:text-white"
                   >
                     <ExternalLink size={21} />
@@ -102,7 +91,7 @@ export function ReviewVideos() {
         {/* Bottom Message */}
         <div className="mt-12 text-center">
           <p className="text-sm text-neutral-600">
-            Your memories could be featured here too!
+            {t("bottomMessage")}
           </p>
         </div>
 

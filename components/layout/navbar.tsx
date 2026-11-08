@@ -1,16 +1,15 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
+import { LanguageSwitcher } from "@/components/shared/language-switcher";
 
 import {
   Menu,
-  Phone,
   ChevronDown,
 } from "lucide-react";
 
@@ -23,21 +22,20 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 
-
-const navigation = [
-  { name: "Home", href: "/#home", section: "home", match: "/" },
-  { name: "Destinations", href: "/#destinations", section: "destinations", match: "/destinations" },
-  { name: "Reviews", href: "/reviews", section: null, match: "/reviews" },
-  { name: "About Us", href: "/#about", section: "about", match: "/about" },
-  { name: "Contact", href: "/#contact", section: "contact", match: "/contact" },
-] as const;
-
 const SECTION_IDS = ["home", "destinations", "about", "contact"];
 
-
 export function Navbar() {
+  const t = useTranslations("Navbar");
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("home");
+
+  const navigation = [
+    { key: "home", href: "/#home", section: "home", match: "/" },
+    { key: "destinations", href: "/#destinations", section: "destinations", match: "/destinations" },
+    { key: "reviews", href: "/reviews", section: null, match: "/reviews" },
+    { key: "about", href: "/#about", section: "about", match: "/about" },
+    { key: "contact", href: "/#contact", section: "contact", match: "/contact" },
+  ] as const;
 
   useEffect(() => {
     if (pathname !== "/") return;
@@ -83,7 +81,7 @@ export function Navbar() {
           <div className="relative h-11 w-11 overflow-hidden rounded-full">
             <Image
               src="/logo.png"
-              alt="Travel with Limon"
+              alt={t("brand")}
               fill
               priority
               sizes="44px"
@@ -92,14 +90,14 @@ export function Navbar() {
           </div>
 
           <span className="ml-2 font-heading text-xl font-bold text-neutral-900">
-            Travel with Limon
+            {t("brand")}
           </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {navigation.map((item) => (
             <Link
-              key={item.name}
+              key={item.key}
               href={item.href}
               className={`flex items-center gap-1 text-sm font-semibold transition-colors hover:text-brand-orange ${
                 isActive(item)
@@ -107,9 +105,9 @@ export function Navbar() {
                   : "text-neutral-800"
               }`}
             >
-              {item.name}
+              {t(item.key)}
 
-              {item.name === "Destinations" && (
+              {item.key === "destinations" && (
                 <ChevronDown size={14} />
               )}
             </Link>
@@ -117,20 +115,14 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <a
-            href="tel:+918001242166"
-            className="flex items-center gap-2 text-sm font-semibold text-neutral-800 transition-colors hover:text-brand-orange"
-          >
-            <Phone size={16} />
-            +91 80012 42166
-          </a>
+          <LanguageSwitcher />
 
           <Button
             nativeButton={false}
             render={<Link href="/#contact" />}
             className="rounded-full bg-brand-orange px-6 font-semibold text-white hover:bg-orange-700"
           >
-            Book Now
+            {t("bookNow")}
           </Button>
         </div>
 
@@ -141,7 +133,7 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  aria-label="Open navigation menu"
+                  aria-label={t("openMenu")}
                 />
               }
             >
@@ -161,7 +153,7 @@ export function Navbar() {
               <nav className="mt-8 flex flex-col gap-2">
                 {navigation.map((item) => (
                   <SheetClose
-                    key={item.name}
+                    key={item.key}
                     nativeButton={false}
                     render={
                       <Link
@@ -172,9 +164,9 @@ export function Navbar() {
                       />
                     }
                   >
-                    {item.name}
+                    {t(item.key)}
 
-                    {item.name === "Destinations" && (
+                    {item.key === "destinations" && (
                       <ChevronDown size={16} />
                     )}
                   </SheetClose>
@@ -182,23 +174,14 @@ export function Navbar() {
               </nav>
 
               <div className="mt-8 space-y-4 border-t border-orange-100 pt-6">
-                <a
-                  href="tel:+918001242166"
-                  className="flex items-center gap-3 px-4 text-sm font-medium"
-                >
-                  <Phone
-                    size={18}
-                    className="text-brand-orange"
-                  />
-                  +91 80012 42166
-                </a>
+                <LanguageSwitcher />
 
                 <Button
                   nativeButton={false}
                   render={<Link href="/#contact" />}
                   className="w-full rounded-full bg-brand-orange text-white hover:bg-orange-700"
                 >
-                  Book Your Trip
+                  {t("bookYourTrip")}
                 </Button>
               </div>
             </SheetContent>

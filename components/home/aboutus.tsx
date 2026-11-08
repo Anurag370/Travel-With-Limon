@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
   Compass,
@@ -11,47 +11,31 @@ import {
   Users,
 } from "lucide-react";
 
-const values = [
-  {
-    icon: Leaf,
-    title: "Travel Responsibly",
-    description:
-      "We encourage thoughtful travel that respects local culture, nature, and the communities we visit.",
-  },
-  {
-    icon: Heart,
-    title: "Genuine Experiences",
-    description:
-      "Discover the character of every destination through meaningful, memorable experiences.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Your Comfort Matters",
-    description:
-      "From the first conversation to the end of your journey, your comfort and peace of mind come first.",
-  },
-  {
-    icon: Sparkles,
-    title: "Thoughtful Planning",
-    description:
-      "We pay attention to the little details that help make every trip feel special.",
-  },
-];
+import { Link } from "@/i18n/navigation";
 
-const highlights = [
-  { icon: Compass, title: "Explore with purpose", text: "Trips shaped around the places you want to discover." },
-  { icon: MapPin, title: "Local perspective", text: "A travel experience inspired by the people and places of India." },
-  { icon: Users, title: "People first", text: "Friendly guidance and support while planning your journey." },
-];
+export async function AboutUs() {
+  const t = await getTranslations("About");
 
-export function AboutUs() {
+  const values = [
+    { icon: Leaf, ...t.raw("values.responsibly") as { title: string; description: string } },
+    { icon: Heart, ...t.raw("values.genuine") as { title: string; description: string } },
+    { icon: ShieldCheck, ...t.raw("values.comfort") as { title: string; description: string } },
+    { icon: Sparkles, ...t.raw("values.planning") as { title: string; description: string } },
+  ];
+
+  const highlights = [
+    { icon: Compass, ...t.raw("highlights.explorePurpose") as { title: string; text: string } },
+    { icon: MapPin, ...t.raw("highlights.localPerspective") as { title: string; text: string } },
+    { icon: Users, ...t.raw("highlights.peopleFirst") as { title: string; text: string } },
+  ];
+
   return (
     <main className="scroll-mt-16 bg-[#fff9ef] text-neutral-800" id="about">
       {/* Page hero */}
       <section className="relative isolate flex min-h-[310px] items-center overflow-hidden bg-[#073b34] sm:min-h-[390px]">
         <Image
           src="/images/darjeeling-hero.jpg"
-          alt="Mountain landscape in the Indian Himalayas"
+          alt={t("imageAlt")}
           fill
           priority
           sizes="100vw"
@@ -62,15 +46,13 @@ export function AboutUs() {
           <div className="max-w-2xl">
             <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-white/90">
               <span className="h-px w-8 bg-brand-orange" />
-              About Travel with Limon
+              {t("eyebrow")}
             </div>
             <h1 className="font-heading text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Our Story
+              {t("title")}
             </h1>
             <p className="mt-5 max-w-xl text-sm leading-7 text-white/85 sm:text-base">
-              Every journey has a story. We are here to help you discover
-              incredible places, experience local culture, and make memories
-              that stay with you.
+              {t("intro")}
             </p>
           </div>
         </div>
@@ -84,7 +66,7 @@ export function AboutUs() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] shadow-xl shadow-emerald-950/10">
               <div
                 role="img"
-                aria-label="Travellers exploring a mountain trail"
+                aria-label={t("trailAlt")}
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage:
@@ -93,8 +75,8 @@ export function AboutUs() {
               />
             </div>
             <div className="absolute -bottom-5 -right-3 rounded-2xl border border-orange-100 bg-white px-5 py-4 shadow-lg sm:-right-6">
-              <p className="font-heading text-lg font-bold text-brand-green">Travel. Explore.</p>
-              <p className="text-sm text-neutral-500">Experience India.</p>
+              <p className="font-heading text-lg font-bold text-brand-green">{t("badgeTitle")}</p>
+              <p className="text-sm text-neutral-500">{t("badgeSubtitle")}</p>
             </div>
           </div>
 
@@ -102,21 +84,17 @@ export function AboutUs() {
             <div className="mb-3 flex items-center gap-3">
               <span className="h-px w-8 bg-brand-orange" />
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-                Who We Are
+                {t("whoWeAre")}
               </span>
             </div>
             <h2 className="font-heading text-3xl font-bold leading-tight text-brand-green sm:text-4xl">
-              Making every journey worth remembering
+              {t("storyTitle")}
             </h2>
             <p className="mt-5 text-sm leading-7 text-neutral-600 sm:text-base">
-              Travel with Limon is built around a simple idea: travelling
-              should be more than moving from one place to another. It should
-              bring you closer to new landscapes, cultures, food, and people.
+              {t("storyP1")}
             </p>
             <p className="mt-4 text-sm leading-7 text-neutral-600 sm:text-base">
-              Whether you are dreaming of mountain views, a peaceful getaway,
-              or an exciting holiday with family and friends, we want to make
-              planning your next adventure easier and more personal.
+              {t("storyP2")}
             </p>
 
             <div className="mt-8 space-y-5">
@@ -146,15 +124,15 @@ export function AboutUs() {
             <div className="mb-3 flex items-center justify-center gap-3">
               <span className="h-px w-8 bg-brand-orange" />
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-                What Guides Us
+                {t("guidesUs")}
               </span>
               <span className="h-px w-8 bg-brand-orange" />
             </div>
             <h2 className="font-heading text-3xl font-bold text-brand-green sm:text-4xl">
-              Our Values
+              {t("valuesTitle")}
             </h2>
             <p className="mt-3 text-sm leading-7 text-neutral-600 sm:text-base">
-              The principles behind the way we plan, guide, and experience every journey.
+              {t("valuesDescription")}
             </p>
           </div>
 
@@ -195,20 +173,19 @@ export function AboutUs() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#052e29]/90 via-[#073b34]/75 to-[#052e29]/90" />
         <div className="relative mx-auto max-w-3xl">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-orange-300">
-            Your next story starts here
+            {t("ctaEyebrow")}
           </p>
           <h2 className="mt-3 font-heading text-3xl font-bold text-white sm:text-4xl">
-            Travel Beyond Boundaries
+            {t("ctaTitle")}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-white/80 sm:text-base">
-            Tell us what kind of journey you have in mind. Let&apos;s start
-            planning an experience you will always remember.
+            {t("ctaDescription")}
           </p>
           <Link
             href="/#contact"
             className="mt-7 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand-orange px-7 text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-700"
           >
-            Plan Your Trip <ArrowRight size={17} />
+            {t("planYourTrip")} <ArrowRight size={17} />
           </Link>
         </div>
       </section>

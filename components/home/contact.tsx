@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 import { SocialLinks } from '../shared/socials'
 import {
@@ -11,38 +12,23 @@ import {
   Send,
   ChevronDown,
 } from "lucide-react";
-const WHATSAPP_BUSINESS_NUMBER = "+918768790090";
-const faqs = [
-  {
-    question: "How can I book a trip?",
-    answer:
-      "Send us your destination, travel dates, and the number of travellers. Our team will get in touch to discuss the next steps.",
-  },
-  {
-    question: "Can I ask for a customised travel plan?",
-    answer:
-      "Absolutely. Share the places you would like to visit, your preferred dates, and any special requirements in the message form.",
-  },
-  {
-    question: "How can I confirm package details and payment options?",
-    answer:
-      "Contact us directly before making a payment. We will share the available package details and explain the payment process with you.",
-  },
-  {
-    question: "Where are you located?",
-    answer:
-      "Travel with Limon is based in Falakata, Alipurduar, West Bengal. Please contact us before visiting so we can coordinate with you.",
-  },
-];
-
 
 export function Contact() {
+  const t = useTranslations("Contact");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const subjectOptions = [
+    { key: "package", value: "Tour package enquiry" },
+    { key: "custom", value: "Custom travel plan" },
+    { key: "hotel", value: "Hotel enquiry" },
+    { key: "booking", value: "Booking support" },
+    { key: "other", value: "Other question" },
+  ] as const;
 
   const [form, setForm] = useState({
     name: "",
     email: "",
-    subject: "Tour package enquiry",
+    subject: "package",
     message: "",
   });
 
@@ -50,22 +36,24 @@ export function Contact() {
     event.preventDefault();
 
     const message = [
-      "Hello Travel with Limon! 👋",
+      t("whatsapp.greeting"),
       "",
-      "I have a new travel enquiry.",
+      t("whatsapp.intro"),
       "",
-      `Name: ${form.name.trim()}`,
-      `Email: ${form.email.trim()}`,
-      `Subject: ${form.subject}`,
-      `Message: ${form.message.trim()}`,
+      `${t("whatsapp.nameLabel")}: ${form.name.trim()}`,
+      `${t("whatsapp.emailLabel")}: ${form.email.trim()}`,
+      `${t("whatsapp.subjectLabel")}: ${t(`subjects.${form.subject}`)}`,
+      `${t("whatsapp.messageLabel")}: ${form.message.trim()}`,
       "",
-      "Please share more details. Thank you!",
+      t("whatsapp.closing"),
     ].join("\n");
 
     const whatsappUrl = `https://wa.me/${+918768790090}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
+
+  const faqs = t.raw("faqs") as Array<{ question: string; answer: string }>;
 
   return (
     <main className="scroll-mt-16 bg-[#fff9ef] text-neutral-800" id="contact">
@@ -85,16 +73,15 @@ export function Contact() {
           <div className="max-w-2xl">
             <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-white/90">
               <span className="h-px w-8 bg-brand-orange" />
-              Contact Us
+              {t("eyebrow")}
             </div>
 
             <h1 className="font-heading text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Get in Touch
+              {t("title")}
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-7 text-white/85 sm:text-base">
-              Have a question, need a custom trip, or want to plan your next
-              adventure? We would love to hear from you.
+              {t("intro")}
             </p>
           </div>
         </div>
@@ -109,16 +96,15 @@ export function Contact() {
           <div className="rounded-3xl border border-orange-100 bg-white p-5 shadow-lg shadow-emerald-950/5 sm:p-8">
             <div className="mb-7">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-                Write to us
+                {t("formEyebrow")}
               </p>
 
               <h2 className="mt-2 font-heading text-2xl font-bold text-brand-green sm:text-3xl">
-                Send Us a Message
+                {t("formTitle")}
               </h2>
 
               <p className="mt-2 text-sm leading-6 text-neutral-500">
-                Fill in the details below and continue the conversation with us
-                on WhatsApp.
+                {t("formIntro")}
               </p>
             </div>
 
@@ -128,7 +114,7 @@ export function Contact() {
                   htmlFor="contact-name"
                   className="mb-2 block text-sm font-semibold text-neutral-700"
                 >
-                  Your Name <span className="text-brand-orange">*</span>
+                  {t("nameLabel")} <span className="text-brand-orange">*</span>
                 </label>
 
                 <input
@@ -140,7 +126,7 @@ export function Contact() {
                   onChange={(event) =>
                     setForm({ ...form, name: event.target.value })
                   }
-                  placeholder="Enter your full name"
+                  placeholder={t("namePlaceholder")}
                   className="h-12 w-full rounded-xl border border-neutral-200 bg-[#fffdf9] px-4 text-sm outline-none transition placeholder:text-neutral-400 focus:border-brand-orange focus:ring-4 focus:ring-orange-100"
                 />
               </div>
@@ -150,7 +136,7 @@ export function Contact() {
                   htmlFor="contact-email"
                   className="mb-2 block text-sm font-semibold text-neutral-700"
                 >
-                  Your Email <span className="text-brand-orange">*</span>
+                  {t("emailLabel")} <span className="text-brand-orange">*</span>
                 </label>
 
                 <input
@@ -162,7 +148,7 @@ export function Contact() {
                   onChange={(event) =>
                     setForm({ ...form, email: event.target.value })
                   }
-                  placeholder="you@example.com"
+                  placeholder={t("emailPlaceholder")}
                   className="h-12 w-full rounded-xl border border-neutral-200 bg-[#fffdf9] px-4 text-sm outline-none transition placeholder:text-neutral-400 focus:border-brand-orange focus:ring-4 focus:ring-orange-100"
                 />
               </div>
@@ -172,7 +158,7 @@ export function Contact() {
                   htmlFor="contact-subject"
                   className="mb-2 block text-sm font-semibold text-neutral-700"
                 >
-                  Subject
+                  {t("subjectLabel")}
                 </label>
 
                 <select
@@ -183,11 +169,11 @@ export function Contact() {
                   }
                   className="h-12 w-full rounded-xl border border-neutral-200 bg-[#fffdf9] px-4 text-sm outline-none transition focus:border-brand-orange focus:ring-4 focus:ring-orange-100"
                 >
-                  <option>Tour package enquiry</option>
-                  <option>Custom travel plan</option>
-                  <option>Hotel enquiry</option>
-                  <option>Booking support</option>
-                  <option>Other question</option>
+                  {subjectOptions.map((option) => (
+                    <option key={option.key} value={option.key}>
+                      {t(`subjects.${option.key}`)}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -196,7 +182,7 @@ export function Contact() {
                   htmlFor="contact-message"
                   className="mb-2 block text-sm font-semibold text-neutral-700"
                 >
-                  Your Message <span className="text-brand-orange">*</span>
+                  {t("messageLabel")} <span className="text-brand-orange">*</span>
                 </label>
 
                 <textarea
@@ -207,7 +193,7 @@ export function Contact() {
                   onChange={(event) =>
                     setForm({ ...form, message: event.target.value })
                   }
-                  placeholder="Tell us a little about the trip you have in mind..."
+                  placeholder={t("messagePlaceholder")}
                   className="w-full resize-y rounded-xl border border-neutral-200 bg-[#fffdf9] px-4 py-3 text-sm outline-none transition placeholder:text-neutral-400 focus:border-brand-orange focus:ring-4 focus:ring-orange-100"
                 />
               </div>
@@ -217,12 +203,11 @@ export function Contact() {
                 className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand-orange px-6 text-sm font-semibold text-white shadow-md shadow-orange-900/10 transition hover:-translate-y-0.5 hover:bg-orange-700 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange-200"
               >
                 <Send size={17} />
-                Send via WhatsApp
+                {t("sendWhatsApp")}
               </button>
 
               <p className="text-center text-xs leading-5 text-neutral-500">
-                Your message will open in WhatsApp Business. You can review it
-                before sending.
+                {t("whatsappNote")}
               </p>
             </form>
           </div>
@@ -231,11 +216,11 @@ export function Contact() {
           <aside className="space-y-6">
             <div className="rounded-3xl border border-orange-100 bg-white p-5 shadow-lg shadow-emerald-950/5 sm:p-7">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-                Reach our team
+                {t("reachEyebrow")}
               </p>
 
               <h2 className="mt-2 font-heading text-2xl font-bold text-brand-green">
-                Contact Information
+                {t("infoTitle")}
               </h2>
 
               <div className="mt-7 space-y-6">
@@ -252,7 +237,7 @@ export function Contact() {
 
                   <span>
                     <span className="block text-sm font-semibold text-neutral-900">
-                      WhatsApp Business
+                      {t("whatsappBusiness")}
                     </span>
 
                     <span className="mt-1 block text-sm text-neutral-600">
@@ -260,7 +245,7 @@ export function Contact() {
                     </span>
 
                     <span className="mt-1 block text-xs text-neutral-400">
-                      Chat with us about your trip
+                      {t("whatsappHint")}
                     </span>
                   </span>
                 </a>
@@ -273,7 +258,7 @@ export function Contact() {
 
                   <span>
                     <span className="block text-sm font-semibold text-neutral-900">
-                      Contact Call
+                      {t("contactCall")}
                     </span>
 
                     <span className="mt-1 block text-sm text-neutral-600">
@@ -281,7 +266,7 @@ export function Contact() {
                     </span>
 
                     <span className="mt-1 block text-xs text-neutral-400">
-                      Call us for enquiries
+                      {t("callHint")}
                     </span>
                   </span>
                 </a>
@@ -297,7 +282,7 @@ export function Contact() {
 
                   <span className="min-w-0">
                     <span className="block text-sm font-semibold text-neutral-900">
-                      Email Us
+                      {t("emailUs")}
                     </span>
 
                     <span className="mt-1 block break-all text-sm text-neutral-600">
@@ -305,7 +290,7 @@ export function Contact() {
                     </span>
 
                     <span className="mt-1 block text-xs text-neutral-400">
-                      Send us your questions anytime
+                      {t("emailHint")}
                     </span>
                   </span>
                 </a>
@@ -323,15 +308,15 @@ export function Contact() {
 
                   <span>
                     <span className="block text-sm font-semibold text-neutral-900">
-                      Our Location
+                      {t("ourLocation")}
                     </span>
 
                     <span className="mt-1 block text-sm text-neutral-600">
-                      Falakata, Alipurduar
+                      {t("locationCity")}
                     </span>
 
                     <span className="mt-1 block text-xs text-neutral-400">
-                      West Bengal, India · View map
+                      {t("locationRegion")}
                     </span>
                   </span>
                 </a>
@@ -340,12 +325,11 @@ export function Contact() {
               <div className="mt-7 rounded-2xl bg-[#fff5e8] p-4">
                 <div className="flex items-center gap-2 text-sm font-semibold text-brand-green">
                   <Clock3 size={17} className="text-brand-orange" />
-                  Let&apos;s plan your next journey
+                  {t("planJourney")}
                 </div>
 
                 <p className="mt-2 text-xs leading-5 text-neutral-600">
-                  Call, email, or message us with your travel requirements.
-                  We&apos;ll be happy to help.
+                  {t("planJourneyText")}
                 </p>
               </div>
             </div>
@@ -353,12 +337,11 @@ export function Contact() {
             {/* Social Media */}
             <div className="rounded-3xl border border-orange-100 bg-white p-5 shadow-sm sm:p-7">
               <h3 className="font-heading text-xl font-bold text-brand-green">
-                Follow Our Journey
+                {t("followTitle")}
               </h3>
 
               <p className="mt-2 text-sm leading-6 text-neutral-600">
-                Explore our travel stories, discover beautiful destinations, and
-                stay connected with Travel With Limon.
+                {t("followText")}
               </p>
 
               <div className="mt-5">
@@ -366,7 +349,7 @@ export function Contact() {
               </div>
 
               <p className="mt-4 text-xs text-neutral-400">
-                Follow us for travel inspiration and updates.
+                {t("followNote")}
               </p>
             </div>
           </aside>
@@ -378,15 +361,15 @@ export function Contact() {
         <div className="mx-auto max-w-3xl">
           <div className="mb-9 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-              Need to know?
+              {t("faqEyebrow")}
             </p>
 
             <h2 className="mt-2 font-heading text-3xl font-bold text-brand-green sm:text-4xl">
-              Frequently Asked Questions
+              {t("faqTitle")}
             </h2>
 
             <p className="mt-3 text-sm text-neutral-600">
-              A few quick answers to help you get started.
+              {t("faqIntro")}
             </p>
           </div>
 
@@ -432,7 +415,7 @@ export function Contact() {
         <div className="mx-auto grid max-w-[1200px] overflow-hidden rounded-3xl border border-orange-100 bg-[#e9f0df] shadow-sm md:grid-cols-[1fr_1.1fr]">
           <div className="relative min-h-[220px] md:min-h-[250px]">
             <iframe
-              title="Map showing Falakata, Alipurduar, West Bengal"
+              title={t("mapFrameTitle")}
               src="https://www.google.com/maps?q=Falakata%2C%20Alipurduar%2C%20West%20Bengal&output=embed"
               className="h-full w-full border-0"
               loading="lazy"
@@ -443,11 +426,11 @@ export function Contact() {
           <div className="flex items-center justify-between gap-3 p-5">
             <div>
               <h3 className="font-heading text-lg font-bold text-brand-green">
-                Find Us Here
+                {t("findUs")}
               </h3>
 
               <p className="mt-1 text-sm text-neutral-600">
-                Falakata, West Bengal, India
+                {t("findUsAddress")}
               </p>
             </div>
 
@@ -457,7 +440,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="shrink-0 rounded-full border border-brand-green/20 px-4 py-2 text-xs font-semibold text-brand-green transition hover:bg-brand-green hover:text-white"
             >
-              Open Map
+              {t("openMap")}
             </a>
           </div>
         </div>
