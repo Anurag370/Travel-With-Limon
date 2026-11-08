@@ -1,17 +1,20 @@
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MapPin } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
-export function Hero() {
+export async function Hero() {
+  const t = await getTranslations("Hero");
+
   return (
     <section id="home" className="relative isolate flex min-h-[470px] items-center overflow-hidden bg-[#09243c] md:min-h-[540px]">
 
       {/* Background Image */}
       <Image
         src="/images/darjeeling-hero.jpg"
-        alt="Beautiful Mountain, Darjeeling"
+        alt={t("imageAlt")}
         fill
         priority
         sizes="100vw"
@@ -32,24 +35,23 @@ export function Hero() {
           {/* Eyebrow */}
           <div className="mb-5 flex items-center gap-3 text-sm font-medium tracking-wide text-white sm:text-base">
             <span className="h-px w-8 bg-brand-orange" />
-            Discover Incredible India
+            {t("eyebrow")}
             <span className="h-px w-8 bg-brand-orange" />
           </div>
 
           {/* Heading */}
           <h1 className="font-heading text-4xl font-bold leading-[1.12] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[64px]">
-            Travel{" "}
-            <span className="text-brand-orange">
-              India
-            </span>
-            <br />
-            Like Never Before
+            {t.rich("title", {
+              highlight: (chunks) => (
+                <span className="text-brand-orange">{chunks}</span>
+              ),
+              br: () => <br />,
+            })}
           </h1>
 
           {/* Description */}
           <p className="mt-6 max-w-lg text-sm leading-7 text-white/90 sm:text-base md:text-lg">
-            Handpicked destinations, curated tour packages,
-            and authentic Indian experiences.
+            {t("description")}
           </p>
 
           {/* CTA Buttons */}
@@ -59,7 +61,7 @@ export function Hero() {
               nativeButton={false}
               render={<Link href="/packages" />}
               className="h-12 rounded-full bg-brand-orange px-6 text-sm font-semibold text-white shadow-lg shadow-orange-950/20 transition-all hover:-translate-y-1 hover:bg-orange-700 sm:px-7">
-              Explore Packages
+              {t("explorePackages")}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
 
@@ -69,7 +71,7 @@ export function Hero() {
               variant="outline"
               className="h-12 rounded-full border-2 border-white/80 bg-transparent px-6 text-sm font-semibold text-white transition-all hover:bg-white hover:text-neutral-900 sm:px-7">
               <MapPin className="mr-2 h-4 w-4" />
-              View Destinations
+              {t("viewDestinations")}
             </Button>
 
           </div>

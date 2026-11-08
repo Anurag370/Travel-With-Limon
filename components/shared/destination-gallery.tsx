@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Images, MapPin, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { destinationGallery } from "@/data/gallery";
 
 interface DestinationGalleryProps {
@@ -10,7 +11,12 @@ interface DestinationGalleryProps {
 }
 
 export function DestinationGallery({ slug }: DestinationGalleryProps) {
+  const t = useTranslations("Gallery");
+  const tDestinations = useTranslations("destinations");
+
   const gallery = destinationGallery[slug];
+  const title = tDestinations(`${slug}.name`);
+
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const closeViewer = useCallback(() => setActiveIndex(null), []);
@@ -60,21 +66,20 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
             <div className="mb-3 flex items-center gap-3">
               <span className="h-px w-8 bg-brand-orange" />
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-                Explore the destination
+                {t("eyebrow")}
               </span>
             </div>
             <h2 className="font-heading text-3xl font-bold text-brand-green sm:text-4xl">
-              Moments worth remembering
+              {t("title")}
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-neutral-600 sm:text-base">
-              Take a closer look at the landscapes, views and experiences waiting
-              for you in {gallery.title}.
+              {t("description", { title })}
             </p>
           </div>
 
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-orange-200 bg-white px-4 py-2 text-sm font-semibold text-brand-green">
             <Images size={16} className="text-brand-orange" />
-            {images.length} {images.length === 1 ? "photo" : "photos"}
+            {t("photoCount", { count: images.length })}
           </div>
         </div>
 
@@ -88,7 +93,7 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
                 key={src}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                aria-label={`Open photo ${index + 1} of ${gallery.title}`}
+                aria-label={t("openPhoto", { index: index + 1, title })}
                 className={`group relative min-h-[230px] overflow-hidden rounded-2xl bg-neutral-200 text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-brand-orange/50 ${
                   isFeatured
                     ? "sm:col-span-2 sm:row-span-2 sm:min-h-[430px] lg:min-h-[500px]"
@@ -97,7 +102,7 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
               >
                 <Image
                   src={src}
-                  alt={`${gallery.title} travel view ${index + 1}`}
+                  alt={t("imageAlt", { title, index: index + 1 })}
                   fill
                   priority={isFeatured}
                   sizes={
@@ -112,14 +117,14 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
                 {isFeatured && (
                   <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full border border-white/25 bg-black/25 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md">
                     <MapPin size={15} />
-                    Discover {gallery.title}
+                    {t("discover", { title })}
                   </div>
                 )}
 
                 {isLastVisible && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/55 text-white">
                     <span className="rounded-full border border-white/40 bg-white/15 px-5 py-3 text-sm font-bold backdrop-blur-md">
-                      +{images.length - 5} more photos
+                      {t("morePhotos", { count: images.length - 5 })}
                     </span>
                   </div>
                 )}
@@ -137,7 +142,7 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 sm:p-8"
             role="dialog"
             aria-modal="true"
-            aria-label={`${gallery.title} photo viewer`}
+            aria-label={t("viewerLabel", { title })}
             onMouseDown={(event) => {
               if (event.target === event.currentTarget) closeViewer();
             }}
@@ -145,7 +150,7 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
             <button
               type="button"
               onClick={closeViewer}
-              aria-label="Close photo viewer"
+              aria-label={t("closeViewer")}
               className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
             >
               <X size={22} />
@@ -154,7 +159,7 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
             <button
               type="button"
               onClick={showPrevious}
-              aria-label="Previous photo"
+              aria-label={t("previousPhoto")}
               className="absolute left-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:left-8"
             >
               <ChevronLeft size={26} />
@@ -163,7 +168,7 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
             <div className="relative h-[72vh] w-full max-w-6xl">
               <Image
                 src={images[activeIndex]}
-                alt={`${gallery.title} photo ${activeIndex + 1}`}
+                alt={t("viewerImageAlt", { title, index: activeIndex + 1 })}
                 fill
                 priority
                 sizes="100vw"
@@ -174,14 +179,18 @@ export function DestinationGallery({ slug }: DestinationGalleryProps) {
             <button
               type="button"
               onClick={showNext}
-              aria-label="Next photo"
-              className="absolute right-3 top-1/2 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:right-8"
+              aria-label={t("nextPhoto")}
+              className="absolute right-3 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 sm:right-8"
             >
               <ChevronRight size={26} />
             </button>
 
             <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md">
-              {activeIndex + 1} / {images.length} · {gallery.title}
+              {t("counter", {
+                index: activeIndex + 1,
+                total: images.length,
+                title,
+              })}
             </div>
           </div>
         )}

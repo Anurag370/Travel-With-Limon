@@ -1,10 +1,13 @@
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
 
 import { destinations } from "@/data/destinations";
 import { DestinationCard } from "@/components/shared/destination-card";
+import { Link } from "@/i18n/navigation";
 
-export function Destinations() {
+export async function Destinations() {
+  const t = await getTranslations("DestinationsSection");
+
   return (
     <section
       id="destinations"
@@ -19,25 +22,24 @@ export function Destinations() {
             <div className="mb-3 flex items-center gap-3">
               <span className="h-px w-8 bg-brand-orange" />
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
-                Discover India
+                {t("eyebrow")}
               </span>
             </div>
 
             <h2 className="font-heading text-3xl font-bold leading-tight text-brand-green sm:text-4xl lg:text-5xl">
-              Explore India&apos;s Finest Destinations
+              {t("title")}
             </h2>
 
             <p className="mt-4 max-w-xl text-sm leading-7 text-neutral-600 sm:text-base">
-              From the majestic Himalayas to tropical beaches,
-              discover the incredible diversity and beauty of India.
+              {t("description")}
             </p>
           </div>
 
           <Link
-            href="/destinations"
+            href="/#destinations"
             className="inline-flex shrink-0 items-center gap-2 text-sm font-bold text-brand-orange transition-all hover:gap-3"
           >
-            View All Destinations
+            {t("viewAll")}
             <ArrowRight size={17} />
           </Link>
         </div>
