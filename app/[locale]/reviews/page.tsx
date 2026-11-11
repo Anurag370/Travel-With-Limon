@@ -35,13 +35,13 @@ export default async function ReviewsPage() {
             className="object-cover"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#032c28]/95 via-[#063d36]/75 to-[#063d36]/30" />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#032c28]/95 via-[#063d36]/75 to-[#063d36]/30" />
 
           <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 py-20 sm:px-8 lg:px-12">
 
-            <div className="max-w-2xl">
+            <div className="max-w-2xl lg:ml-auto lg:mr-0 lg:text-right">
 
-              <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-white/90">
+              <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-white/90 lg:justify-end">
                 <span className="h-px w-8 bg-brand-orange" />
                 {t("heroEyebrow")}
               </div>
@@ -53,14 +53,14 @@ export default async function ReviewsPage() {
                 </span>
               </h1>
 
-              <p className="mt-5 max-w-xl text-sm leading-7 text-white/85 sm:text-base">
+              <p className="mt-5 max-w-xl text-sm leading-7 text-white/85 sm:text-base lg:ml-auto">
                 {t("heroDescription")}
               </p>
 
             </div>
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-brand-orange via-brand-gold to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-l from-brand-orange via-brand-gold to-transparent" />
         </section>
 
         {/* Video Reviews */}

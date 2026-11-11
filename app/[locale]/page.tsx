@@ -5,6 +5,7 @@ import { Destinations } from "@/components/home/destinations";
 import { AboutUs } from "@/components/home/aboutus";
 import { Contact } from "@/components/home/contact";
 import Footer from "@/components/layout/footer";
+import { ReviewVideos } from "@/components/reviews/review-videos";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <TravelSearch />
         <Destinations />
         <AboutUs />
+        <ReviewVideos/>
         <Contact />
         <Footer />
 

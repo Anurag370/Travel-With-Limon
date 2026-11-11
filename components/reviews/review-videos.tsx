@@ -18,7 +18,7 @@ export async function ReviewVideos() {
       <div className="mx-auto max-w-[1200px]">
 
         {/* Section Heading */}
-        <div className="mb-10 text-center">
+        <div className="mb-10 text-left">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">
             {t("sectionEyebrow")}
           </p>
@@ -27,7 +27,7 @@ export async function ReviewVideos() {
             {t("sectionTitle")}
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-neutral-600 sm:text-base">
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-neutral-600 sm:text-base">
             {t("sectionDescription")}
           </p>
         </div>
