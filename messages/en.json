@@ -15,6 +15,10 @@
     "contact": {
       "title": "Contact Us | Travel with Limon",
       "description": "Get in touch with Travel with Limon for tour packages, custom travel plans, and booking support."
+    },
+    "packages": {
+      "title": "Tour Packages & Prices | Travel with Limon",
+      "description": "Browse approximate per-person prices for tour packages across Darjeeling, Kalimpong, Sikkim, and Dooars."
     }
   },
   "Navbar": {
@@ -22,6 +26,7 @@
     "openMenu": "Open navigation menu",
     "home": "Home",
     "destinations": "Destinations",
+    "packages": "Packages",
     "reviews": "Reviews",
     "about": "About Us",
     "contact": "Contact",
@@ -63,6 +68,31 @@
     "title": "Explore India's Finest Destinations",
     "description": "From the majestic Himalayas to tropical beaches, discover the incredible diversity and beauty of India.",
     "viewAll": "View All Destinations"
+  },
+  "Packages": {
+    "heroImageAlt": "Mountain view in Darjeeling",
+    "eyebrow": "Curated Tour Packages",
+    "title": "Find Your Journey, Know the Price",
+    "description": "Explore approximate per-person prices for our most-loved destinations. Tell us your dates and group size for a tailored quote.",
+    "approxNote": "Prices are approximate and may vary by season, group size, and inclusions.",
+    "sectionEyebrow": "Destination Packages",
+    "sectionTitle": "Choose Where You Want to Go",
+    "sectionDescription": "Each package below is a starting point. We can customise the itinerary, stay, and pace around you.",
+    "priceApprox": "Approx. price",
+    "fromPrice": "From {price}",
+    "perPerson": "per person",
+    "durationLabel": "Duration",
+    "duration": "{days, plural, one {# Day} other {# Days}} / {nights, plural, one {# Night} other {# Nights}}",
+    "enquire": "Enquire on WhatsApp",
+    "enquiryMessage": "Hello Travel with Limon! I would like to know more about the {destination} package (approx. {price} per person). Please share the details.",
+    "viewDestination": "View destination",
+    "customTripEyebrow": "Need something different?",
+    "customTripTitle": "Build a Trip That Fits You",
+    "customTripDescription": "Share your travel dates, group size, and the places you love. We will put together a custom plan and a clear price for you.",
+    "customTripCta": "Plan Your Trip",
+    "chatCta": "Chat on WhatsApp",
+    "customTripMessage": "Hello Travel with Limon! I would like help planning a custom trip.",
+    "backToPackages": "Back to packages"
   },
   "About": {
     "imageAlt": "Mountain landscape in the Indian Himalayas",
@@ -195,6 +225,7 @@
     "quickLinks": "Quick Links",
     "home": "Home",
     "destinations": "Destinations",
+    "packages": "Packages",
     "about": "About Us",
     "contact": "Contact",
     "getInTouch": "Get in Touch",
