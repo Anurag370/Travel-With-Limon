@@ -48,6 +48,11 @@ const Footer = async () => {
                 </Link>
               </li>
               <li>
+                <Link className="transition hover:text-orange-300" href="/packages">
+                  {t("packages")}
+                </Link>
+              </li>
+              <li>
                 <Link className="transition hover:text-orange-300" href="/#about">
                   {t("about")}
                 </Link>

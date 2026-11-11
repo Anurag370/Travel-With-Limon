@@ -32,6 +32,7 @@ export function Navbar() {
   const navigation = [
     { key: "home", href: "/#home", section: "home", match: "/" },
     { key: "destinations", href: "/#destinations", section: "destinations", match: "/destinations" },
+    { key: "packages", href: "/packages", section: null, match: "/packages" },
     { key: "reviews", href: "/reviews", section: null, match: "/reviews" },
     { key: "about", href: "/#about", section: "about", match: "/about" },
     { key: "contact", href: "/#contact", section: "contact", match: "/contact" },

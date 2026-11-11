@@ -7,7 +7,9 @@ import { Navbar } from "@/components/layout/navbar";
 import { Link } from "@/i18n/navigation";
 import { destinations } from "@/data/destinations";
 import { destinationGallery } from "@/data/gallery";
+import { getPackageByDestination } from "@/data/packages";
 import { DestinationGallery } from "@/components/shared/destination-gallery";
+import { PackagePanel } from "@/components/packages/package-panel";
 
 export const instant = false;
 
@@ -26,6 +28,7 @@ export default async function DestinationPage({
   const destination = destinations.find((item) => item.slug === slug);
 
   const gallery = destinationGallery[slug];
+  const pkg = getPackageByDestination(slug);
 
   if (!destination || !gallery) {
     notFound();
@@ -85,6 +88,9 @@ export default async function DestinationPage({
             </div>
           </div>
         </section>
+
+        {/* Approximate Package Price */}
+        {pkg && <PackagePanel pkg={pkg} />}
 
         {/* Destination Gallery */}
         <DestinationGallery slug={slug} />
