@@ -6,6 +6,8 @@ interface LogoProps {
 }
 
 export function Logo({ light = false }: LogoProps) {
+  const t = useTranslations("Logo");
+
   return (
     <Link href="/" className="flex items-center gap-2">
       <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
@@ -25,7 +27,7 @@ export function Logo({ light = false }: LogoProps) {
             light ? "text-white" : "text-neutral-950"
           }`}
         >
-          Travel with Limon
+          {t("brand")}
         </span>
 
         <span
@@ -33,7 +35,7 @@ export function Logo({ light = false }: LogoProps) {
             light ? "text-white/80" : "text-neutral-600"
           }`}
         >
-          Travel · Explore · Experience India
+          {t("tagline")}
         </span>
       </div>
     </Link>

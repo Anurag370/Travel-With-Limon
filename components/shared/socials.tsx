@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 const instagramUrl =
   "https://www.instagram.com/travel_with_limon58?srtk=MW83d2FreTEycWRhag==";
 
@@ -41,14 +43,16 @@ function FacebookIcon({ className = "h-6 w-6" }: { className?: string }) {
 
 /* Reusable Social Links */
 export function SocialLinks({ footer = false }: { footer?: boolean }) {
+  const t = useTranslations("Footer");
+
   return (
     <div className="flex gap-3">
       <a
         href={instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Follow Travel With Limon on Instagram"
-        title="Instagram - Travel With Limon"
+        aria-label={t("instagramLabel")}
+        title={t("instagramTitle")}
         className={
           footer
             ? "flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#E4405F]"
@@ -62,8 +66,8 @@ export function SocialLinks({ footer = false }: { footer?: boolean }) {
         href={facebookUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Follow Travel With Limon on Facebook"
-        title="Facebook - Travel With Limon"
+        aria-label={t("facebookLabel")}
+        title={t("facebookTitle")}
         className={
           footer
             ? "flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#1877F2]"

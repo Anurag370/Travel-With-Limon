@@ -1,0 +1,324 @@
+{
+  "Metadata": {
+    "home": {
+      "title": "Travel with Limon | Explore Incredible India",
+      "description": "Discover India's most beautiful destinations with curated travel packages and unforgettable experiences."
+    },
+    "reviews": {
+      "title": "Customer Reviews | Travel with Limon",
+      "description": "Watch real travel experiences and customer reviews from journeys with Travel with Limon."
+    },
+    "about": {
+      "title": "About Us | Travel with Limon",
+      "description": "Learn about Travel with Limon, our story, our values, and how we craft meaningful journeys across India."
+    },
+    "contact": {
+      "title": "Contact Us | Travel with Limon",
+      "description": "Get in touch with Travel with Limon for tour packages, custom travel plans, and booking support."
+    },
+    "packages": {
+      "title": "Tour Packages & Prices | Travel with Limon",
+      "description": "Browse approximate per-person prices for tour packages across Darjeeling, Kalimpong, Sikkim, and Dooars."
+    }
+  },
+  "Navbar": {
+    "brand": "Travel with Limon",
+    "openMenu": "Open navigation menu",
+    "home": "Home",
+    "destinations": "Destinations",
+    "packages": "Packages",
+    "reviews": "Reviews",
+    "about": "About Us",
+    "contact": "Contact",
+    "bookNow": "Book Now",
+    "bookYourTrip": "Book Your Trip",
+    "language": "Language"
+  },
+  "Hero": {
+    "imageAlt": "Beautiful Mountain, Darjeeling",
+    "eyebrow": "Discover Incredible India",
+    "title": "Travel <highlight>India</highlight><br></br>Like Never Before",
+    "description": "Handpicked destinations, curated tour packages, and authentic Indian experiences.",
+    "explorePackages": "Explore Packages",
+    "viewDestinations": "View Destinations"
+  },
+  "TravelSearch": {
+    "tours": "Tour Packages",
+    "hotels": "Hotels",
+    "whereTo": "Where to?",
+    "destinationPlaceholder": "e.g. Darjeeling, Kalimpong, Sikkim",
+    "travelDates": "Travel Dates",
+    "travelers": "Travelers",
+    "travelersCount": "{count, plural, =1 {# Traveler} other {# Travelers}}",
+    "adults": "Adults",
+    "adultsAge": "Age 12+",
+    "removeAdult": "Remove adult",
+    "addAdult": "Add adult",
+    "children": "Children",
+    "childrenAge": "Age 0–11",
+    "removeChild": "Remove child",
+    "addChild": "Add child",
+    "searchTrips": "Search Trips",
+    "readyTitle": "Your search preferences are ready!",
+    "summary": "{category} · {destination} · {date} · {adults} Adults · {children} Children",
+    "demoNote": "This is a frontend demonstration. Live search and booking require a backend integration."
+  },
+  "DestinationsSection": {
+    "eyebrow": "Discover India",
+    "title": "Explore India's Finest Destinations",
+    "description": "From the majestic Himalayas to tropical beaches, discover the incredible diversity and beauty of India.",
+    "viewAll": "View All Destinations"
+  },
+  "Packages": {
+    "heroImageAlt": "Mountain view in Darjeeling",
+    "eyebrow": "Curated Tour Packages",
+    "title": "Find Your Journey, Know the Price",
+    "description": "Explore approximate per-person prices for our most-loved destinations. Tell us your dates and group size for a tailored quote.",
+    "approxNote": "Prices are approximate and may vary by season, group size, and inclusions.",
+    "sectionEyebrow": "Destination Packages",
+    "sectionTitle": "Choose Where You Want to Go",
+    "sectionDescription": "Each package below is a starting point. We can customise the itinerary, stay, and pace around you.",
+    "priceApprox": "Approx. price",
+    "fromPrice": "From {price}",
+    "perPerson": "per person",
+    "durationLabel": "Duration",
+    "duration": "{days, plural, one {# Day} other {# Days}} / {nights, plural, one {# Night} other {# Nights}}",
+    "enquire": "Enquire on WhatsApp",
+    "enquiryMessage": "Hello Travel with Limon! I would like to know more about the {destination} package (approx. {price} per person). Please share the details.",
+    "viewDestination": "View destination",
+    "customTripEyebrow": "Need something different?",
+    "customTripTitle": "Build a Trip That Fits You",
+    "customTripDescription": "Share your travel dates, group size, and the places you love. We will put together a custom plan and a clear price for you.",
+    "customTripCta": "Plan Your Trip",
+    "chatCta": "Chat on WhatsApp",
+    "customTripMessage": "Hello Travel with Limon! I would like help planning a custom trip.",
+    "backToPackages": "Back to packages"
+  },
+  "About": {
+    "imageAlt": "Mountain landscape in the Indian Himalayas",
+    "trailAlt": "Travellers exploring a mountain trail",
+    "eyebrow": "About Travel with Limon",
+    "title": "Our Story",
+    "intro": "Every journey has a story. We are here to help you discover incredible places, experience local culture, and make memories that stay with you.",
+    "badgeTitle": "Travel. Explore.",
+    "badgeSubtitle": "Experience India.",
+    "whoWeAre": "Who We Are",
+    "storyTitle": "Making every journey worth remembering",
+    "storyP1": "Travel with Limon is built around a simple idea: travelling should be more than moving from one place to another. It should bring you closer to new landscapes, cultures, food, and people.",
+    "storyP2": "Whether you are dreaming of mountain views, a peaceful getaway, or an exciting holiday with family and friends, we want to make planning your next adventure easier and more personal.",
+    "guidesUs": "What Guides Us",
+    "valuesTitle": "Our Values",
+    "valuesDescription": "The principles behind the way we plan, guide, and experience every journey.",
+    "ctaEyebrow": "Your next story starts here",
+    "ctaTitle": "Travel Beyond Boundaries",
+    "ctaDescription": "Tell us what kind of journey you have in mind. Let's start planning an experience you will always remember.",
+    "planYourTrip": "Plan Your Trip",
+    "highlights": {
+      "explorePurpose": {
+        "title": "Explore with purpose",
+        "text": "Trips shaped around the places you want to discover."
+      },
+      "localPerspective": {
+        "title": "Local perspective",
+        "text": "A travel experience inspired by the people and places of India."
+      },
+      "peopleFirst": {
+        "title": "People first",
+        "text": "Friendly guidance and support while planning your journey."
+      }
+    },
+    "values": {
+      "responsibly": {
+        "title": "Travel Responsibly",
+        "description": "We encourage thoughtful travel that respects local culture, nature, and the communities we visit."
+      },
+      "genuine": {
+        "title": "Genuine Experiences",
+        "description": "Discover the character of every destination through meaningful, memorable experiences."
+      },
+      "comfort": {
+        "title": "Your Comfort Matters",
+        "description": "From the first conversation to the end of your journey, your comfort and peace of mind come first."
+      },
+      "planning": {
+        "title": "Thoughtful Planning",
+        "description": "We pay attention to the little details that help make every trip feel special."
+      }
+    }
+  },
+  "Contact": {
+    "eyebrow": "Contact Us",
+    "title": "Get in Touch",
+    "intro": "Have a question, need a custom trip, or want to plan your next adventure? We would love to hear from you.",
+    "formEyebrow": "Write to us",
+    "formTitle": "Send Us a Message",
+    "formIntro": "Fill in the details below and continue the conversation with us on WhatsApp.",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "Enter your full name",
+    "emailLabel": "Your Email",
+    "emailPlaceholder": "you@example.com",
+    "subjectLabel": "Subject",
+    "messageLabel": "Your Message",
+    "messagePlaceholder": "Tell us a little about the trip you have in mind...",
+    "sendWhatsApp": "Send via WhatsApp",
+    "whatsappNote": "Your message will open in WhatsApp Business. You can review it before sending.",
+    "subjects": {
+      "package": "Tour package enquiry",
+      "custom": "Custom travel plan",
+      "hotel": "Hotel enquiry",
+      "booking": "Booking support",
+      "other": "Other question"
+    },
+    "whatsapp": {
+      "greeting": "Hello Travel with Limon! 👋",
+      "intro": "I have a new travel enquiry.",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "subjectLabel": "Subject",
+      "messageLabel": "Message",
+      "closing": "Please share more details. Thank you!"
+    },
+    "reachEyebrow": "Reach our team",
+    "infoTitle": "Contact Information",
+    "whatsappBusiness": "WhatsApp Business",
+    "whatsappHint": "Chat with us about your trip",
+    "contactCall": "Contact Call",
+    "callHint": "Call us for enquiries",
+    "emailUs": "Email Us",
+    "emailHint": "Send us your questions anytime",
+    "ourLocation": "Our Location",
+    "locationCity": "Falakata, Alipurduar",
+    "locationRegion": "West Bengal, India · View map",
+    "planJourney": "Let's plan your next journey",
+    "planJourneyText": "Call, email, or message us with your travel requirements. We'll be happy to help.",
+    "followTitle": "Follow Our Journey",
+    "followText": "Explore our travel stories, discover beautiful destinations, and stay connected with Travel With Limon.",
+    "followNote": "Follow us for travel inspiration and updates.",
+    "faqEyebrow": "Need to know?",
+    "faqTitle": "Frequently Asked Questions",
+    "faqIntro": "A few quick answers to help you get started.",
+    "findUs": "Find Us Here",
+    "findUsAddress": "Falakata, West Bengal, India",
+    "openMap": "Open Map",
+    "mapFrameTitle": "Map showing Falakata, Alipurduar, West Bengal",
+    "faqs": [
+      {
+        "question": "How can I book a trip?",
+        "answer": "Send us your destination, travel dates, and the number of travellers. Our team will get in touch to discuss the next steps."
+      },
+      {
+        "question": "Can I ask for a customised travel plan?",
+        "answer": "Absolutely. Share the places you would like to visit, your preferred dates, and any special requirements in the message form."
+      },
+      {
+        "question": "How can I confirm package details and payment options?",
+        "answer": "Contact us directly before making a payment. We will share the available package details and explain the payment process with you."
+      },
+      {
+        "question": "Where are you located?",
+        "answer": "Travel with Limon is based in Falakata, Alipurduar, West Bengal. Please contact us before visiting so we can coordinate with you."
+      }
+    ]
+  },
+  "Footer": {
+    "tagline": "Discover India with curated tours, local experiences, and unforgettable journeys.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "destinations": "Destinations",
+    "packages": "Packages",
+    "about": "About Us",
+    "contact": "Contact",
+    "getInTouch": "Get in Touch",
+    "location": "Falakata, Alipurduar, West Bengal",
+    "copyright": "© 2026 Travel With Limon. All rights reserved.",
+    "instagramLabel": "Follow Travel With Limon on Instagram",
+    "instagramTitle": "Instagram - Travel With Limon",
+    "facebookLabel": "Follow Travel With Limon on Facebook",
+    "facebookTitle": "Facebook - Travel With Limon"
+  },
+  "Reviews": {
+    "metaTitle": "Customer Reviews | Travel with Limon",
+    "metaDescription": "Watch real travel experiences and customer reviews from journeys with Travel with Limon.",
+    "heroImageAlt": "Beautiful Darjeeling mountains",
+    "heroEyebrow": "Traveler Stories",
+    "heroTitle": "Memories That",
+    "heroTitleHighlight": "Travel With Us",
+    "heroDescription": "Every journey has a story worth sharing. Discover the experiences, happiness, and unforgettable memories of travelers who explored with Travel with Limon.",
+    "shareEyebrow": "Your Story Matters",
+    "shareTitle": "Travel With Us. Share Your Memories.",
+    "shareDescription": "Have you travelled with Travel with Limon? We'd love to feature your beautiful travel memories and experiences on our website.",
+    "shareCta": "Share Your Experience",
+    "sectionEyebrow": "Real Stories • Real Experiences",
+    "sectionTitle": "What Our Travelers Say",
+    "sectionDescription": "Every journey creates a beautiful memory. Watch the experiences shared by travelers who explored with Travel with Limon.",
+    "watchOnFacebook": "Watch {title} on Facebook",
+    "bottomMessage": "Your memories could be featured here too!",
+    "videos": {
+      "1": { "title": "Traveler Experience 01", "destination": "Darjeeling" },
+      "2": { "title": "Traveler Experience 02", "destination": "North Sikkim" },
+      "3": { "title": "Traveler Experience 03", "destination": "Travel Memories" },
+      "4": { "title": "Traveler Experience 04", "destination": "Travel Memories" }
+    }
+  },
+  "DestinationPage": {
+    "backToDestinations": "Back to destinations",
+    "photographs": "Explore {count, plural, one {# photograph} other {# photographs}}"
+  },
+  "Gallery": {
+    "eyebrow": "Explore the destination",
+    "title": "Moments worth remembering",
+    "description": "Take a closer look at the landscapes, views and experiences waiting for you in {title}.",
+    "photoCount": "{count, plural, one {# photo} other {# photos}}",
+    "openPhoto": "Open photo {index} of {title}",
+    "imageAlt": "{title} travel view {index}",
+    "discover": "Discover {title}",
+    "morePhotos": "+{count} more photos",
+    "closeViewer": "Close photo viewer",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "viewerLabel": "{title} photo viewer",
+    "viewerImageAlt": "{title} photo {index}",
+    "counter": "{index} / {total} · {title}"
+  },
+  "Logo": {
+    "brand": "Travel with Limon",
+    "tagline": "Travel · Explore · Experience India"
+  },
+  "destinations": {
+    "darjeeling": {
+      "name": "Darjeeling",
+      "state": "West Bengal",
+      "description": "Crown of India"
+    },
+    "darjeeling_offbeat": {
+      "name": "Darjeeling Offbeat",
+      "state": "West Bengal",
+      "description": "Crown of India"
+    },
+    "kalimpong": {
+      "name": "Kalimpong",
+      "state": "West Bengal",
+      "description": "Orchids and cacti"
+    },
+    "kalimpong_offbeat": {
+      "name": "Kalimpong Offbeat",
+      "state": "West Bengal",
+      "description": "Hidden trails and quiet villages"
+    },
+    "north_sikkim": {
+      "name": "North Sikkim",
+      "state": "Sikkim",
+      "description": "Alpine lakes and high passes"
+    },
+    "east_sikkim": {
+      "name": "East Sikkim",
+      "state": "Sikkim",
+      "description": "Alpine lakes and high passes"
+    },
+    "dooars": {
+      "name": "Dooars",
+      "state": "West Bengal",
+      "description": "Gateway to Bhutan"
+    }
+  }
+}

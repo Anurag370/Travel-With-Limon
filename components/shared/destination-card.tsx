@@ -1,16 +1,23 @@
 import Image from "next/image";
-import Link from "next/link";
 import { MapPin, ArrowUpRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import type { Destination } from "@/data/destinations";
+import { Link } from "@/i18n/navigation";
 
 interface DestinationCardProps {
   destination: Destination;
 }
 
-export function DestinationCard({
+export async function DestinationCard({
   destination,
 }: DestinationCardProps) {
+  const t = await getTranslations("destinations");
+
+  const name = t(`${destination.slug}.name`);
+  const state = t(`${destination.slug}.state`);
+  const description = t(`${destination.slug}.description`);
+
   return (
     <Link
       href={destination.href}
@@ -18,7 +25,7 @@ export function DestinationCard({
     >
       <Image
         src={destination.image}
-        alt={`${destination.name}, ${destination.state}`}
+        alt={`${name}, ${state}`}
         fill
         sizes="(max-width: 640px) 85vw, (max-width: 1024px) 45vw, 30vw"
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
@@ -34,15 +41,15 @@ export function DestinationCard({
 
         <div className="mb-2 flex items-center gap-1.5 text-xs font-medium text-white/80">
           <MapPin size={13} />
-          {destination.state}
+          {state}
         </div>
 
         <h3 className="font-heading text-2xl font-bold sm:text-3xl">
-          {destination.name}
+          {name}
         </h3>
 
         <p className="mt-1 text-sm text-white/80">
-          {destination.description}
+          {description}
         </p>
 
         <div className="mt-4 h-px w-0 bg-brand-orange transition-all duration-500 group-hover:w-full" />
