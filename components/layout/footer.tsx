@@ -74,7 +74,7 @@ const Footer = async () => {
                 <li key={place.slug}>
                   <Link
                     className="transition hover:text-orange-300"
-                    href={`/${place.href}`}
+                    href={place.href}
                   >
                     {tDestinations(`${place.slug}.name`)}
                   </Link>

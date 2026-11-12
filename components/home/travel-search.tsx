@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
 import {
   BriefcaseBusiness,
@@ -37,27 +37,36 @@ const destinations = [
 
 const WHATSAPP_NUMBER = "918768790090";
 
+function subscribeToToday() {
+  return () => {};
+}
+
+function getTodaySnapshot() {
+  const now = new Date();
+
+  return [
+    now.getFullYear(),
+    String(now.getMonth() + 1).padStart(2, "0"),
+    String(now.getDate()).padStart(2, "0"),
+  ].join("-");
+}
+
+function getTodayServerSnapshot() {
+  return "";
+}
+
 export function TravelSearch() {
   const [category, setCategory] = useState<Category>("tours");
   const [destination, setDestination] = useState("");
   const [travelDate, setTravelDate] = useState("");
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
-  const [today, setToday] = useState("");
-
-  // Calculate today's date after mounting to avoid
-  // Next.js prerendering errors.
-  useEffect(() => {
-    const now = new Date();
-
-    const localToday = [
-      now.getFullYear(),
-      String(now.getMonth() + 1).padStart(2, "0"),
-      String(now.getDate()).padStart(2, "0"),
-    ].join("-");
-
-    setToday(localToday);
-  }, []);
+  // Resolve today's date on the client without triggering a hydration mismatch.
+  const today = useSyncExternalStore(
+    subscribeToToday,
+    getTodaySnapshot,
+    getTodayServerSnapshot,
+  );
 
   const totalTravelers = adults + children;
 
@@ -307,7 +316,7 @@ export function TravelSearch() {
         {/* WhatsApp Information */}
         <div className="mt-4 flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-xs text-green-800 dark:border-green-900/60 dark:bg-green-950/30 dark:text-green-300">
           <MessageCircle className="h-4 w-4 shrink-0" />
-          Your travel enquiry will open directly in Travel with Limon's WhatsApp.
+          Your travel enquiry will open directly in Travel with Limon&apos;s WhatsApp.
         </div>
       </div>
     </section>

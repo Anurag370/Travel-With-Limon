@@ -78,7 +78,7 @@ export default async function LocaleLayout({
   ].join(" ");
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <body className={`${fontVariables} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
