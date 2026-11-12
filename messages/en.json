@@ -319,6 +319,11 @@
       "name": "Dooars",
       "state": "West Bengal",
       "description": "Gateway to Bhutan"
+    },
+    "bhutan": {
+      "name": "Bhutan",
+      "state": "Bhutan",
+      "description": "Land of the Thunder Dragon"
     }
   }
 }

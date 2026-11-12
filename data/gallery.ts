@@ -1,5 +1,5 @@
 
-export interface DestinationGallery {
+interface DestinationGallery {
   cover: string;
   images: string[];
 }
@@ -70,6 +70,17 @@ export const destinationGallery: Record<string, DestinationGallery> = {
       "/destinations/north_sikkim/ns2.webp",
       "/destinations/north_sikkim/ns3.jpeg",
       "/destinations/north_sikkim/ns4.webp",
+    ],
+  },
+
+  bhutan: {
+    cover: "/destinations/bhutan/bh1.jpeg",
+    images: [
+      "/destinations/bhutan/bh1.jpeg",
+      "/destinations/bhutan/bh2.jpeg",
+      "/destinations/bhutan/bh3.jpeg",
+      "/destinations/bhutan/bh4.jpeg",
+      "/destinations/bhutan/bh5.jpeg",
     ],
   },
 };

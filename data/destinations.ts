@@ -48,4 +48,10 @@ export const destinations: Destination[] = [
     image: "/destinations/dooars/doars1.jpeg",
     href: "/destinations/dooars",
   },
+  {
+    id: 8,
+    slug: "bhutan",
+    image: "/destinations/bhutan/bh1.jpeg",
+    href: "/destinations/bhutan",
+  },
 ];

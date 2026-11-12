@@ -3,11 +3,7 @@ import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 
-interface LogoProps {
-  light?: boolean;
-}
-
-export function Logo({ light = false }: LogoProps) {
+export function Logo() {
   const t = useTranslations("Logo");
 
   return (
@@ -24,19 +20,11 @@ export function Logo({ light = false }: LogoProps) {
       </div>
 
       <div className="flex flex-col">
-        <span
-          className={`font-heading text-xl font-bold leading-tight ${
-            light ? "text-white" : "text-neutral-950"
-          }`}
-        >
+        <span className="font-heading text-xl font-bold leading-tight text-neutral-950">
           {t("brand")}
         </span>
 
-        <span
-          className={`text-[9px] font-medium tracking-tight ${
-            light ? "text-white/80" : "text-neutral-600"
-          }`}
-        >
+        <span className="text-[9px] font-medium tracking-tight text-neutral-600">
           {t("tagline")}
         </span>
       </div>

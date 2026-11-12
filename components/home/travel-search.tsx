@@ -32,6 +32,7 @@ const destinations = [
   "North Sikkim",
   "East Sikkim",
   "Dooars",
+  "Bhutan",
 ];
 
 const WHATSAPP_NUMBER = "918768790090";
