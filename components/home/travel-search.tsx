@@ -216,9 +216,9 @@ export function TravelSearch() {
                 <div className="flex items-center justify-between py-3">
                   <div>
                     <p className="text-sm font-semibold">Adults</p>
-                    <p className="text-xs text-neutral-500 dark:text-[#b5c0ba]">
+                    {/* <p className="text-xs text-neutral-500 dark:text-[#b5c0ba]">
                       Age 12+
-                    </p>
+                    </p> */}
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -254,7 +254,7 @@ export function TravelSearch() {
                   <div>
                     <p className="text-sm font-semibold">Children</p>
                     <p className="text-xs text-neutral-500 dark:text-[#b5c0ba]">
-                      Age 0–11
+                      Age 0–6
                     </p>
                   </div>
 
