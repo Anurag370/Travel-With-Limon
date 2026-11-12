@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Mountain } from "lucide-react";
 
 interface LogoProps {
   light?: boolean;
@@ -8,10 +8,16 @@ interface LogoProps {
 export function Logo({ light = false }: LogoProps) {
   return (
     <Link href="/" className="flex items-center gap-2">
-      <Mountain
-        className="h-9 w-9 text-brand-orange"
-        strokeWidth={2.5}
-      />
+      <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full">
+        <Image
+          src="/logo.png"
+          alt="Travel with Limon"
+          fill
+          priority
+          sizes="44px"
+          className="object-cover"
+        />
+      </div>
 
       <div className="flex flex-col">
         <span
