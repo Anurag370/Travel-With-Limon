@@ -65,7 +65,7 @@ export const itineraries: TravelItinerary[] = [
           "Hotel check-in and leisure time.",
         ],
         overnightStay: "Darjeeling",
-        image: "/destinations/kurseong/ksg1.jpeg",
+        image: "/destinations/kurseong/ksg5.jpeg",
         imageAlt: "Kurseong hill town and tea garden views",
       },
       {
