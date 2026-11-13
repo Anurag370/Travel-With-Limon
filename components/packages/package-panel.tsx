@@ -1,8 +1,11 @@
+
 import { getTranslations } from "next-intl/server";
-import { ArrowUpRight, CalendarDays, IndianRupee } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Map } from "lucide-react";
 
 import type { TravelPackage } from "@/data/packages";
+import { itineraries } from "@/data/itineraries";
 import { getPackageDetails } from "@/lib/package-utils";
+import { Link } from "@/i18n/navigation";
 
 interface PackagePanelProps {
   pkg: TravelPackage;
@@ -10,41 +13,56 @@ interface PackagePanelProps {
 
 export async function PackagePanel({ pkg }: PackagePanelProps) {
   const t = await getTranslations("Packages");
-  const { price, duration, whatsappUrl } = await getPackageDetails(pkg);
+
+  const { duration, whatsappUrl } = await getPackageDetails(pkg);
+
+  // Find all itineraries belonging to this destination.
+  const destinationItineraries = itineraries.filter(
+    (item) => item.destinationSlug === pkg.destinationSlug,
+  );
 
   return (
     <section className="relative z-10 px-4 sm:px-6 lg:px-10">
       <div className="mx-auto -mt-10 max-w-[1200px] rounded-3xl border border-orange-100 bg-white p-5 shadow-xl shadow-emerald-950/10 sm:p-7">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7">
-            <div>
-              <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-neutral-500">
-                <IndianRupee size={13} className="text-brand-orange" />
-                {t("priceApprox")}
-              </p>
 
-              <p className="mt-1 font-heading text-2xl font-bold text-brand-green">
-                {t("fromPrice", { price })}
-              </p>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
-              <p className="text-xs text-neutral-500">{t("perPerson")}</p>
+          {/* Duration */}
+          <div className="flex items-center gap-3">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-orange-50">
+              <CalendarDays size={21} className="text-brand-orange" />
             </div>
 
-            <div className="hidden h-12 w-px bg-orange-100 sm:block" />
-
             <div>
-              <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.16em] text-neutral-500">
-                <CalendarDays size={13} className="text-brand-orange" />
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-neutral-500">
                 {t("durationLabel")}
               </p>
 
-              <p className="mt-2 text-sm font-semibold text-brand-green">
+              <p className="mt-1 text-base font-semibold text-brand-green">
                 {duration}
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          {/* Action Buttons */}
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+
+            {destinationItineraries.map((itinerary) => (
+              <Link
+                key={itinerary.slug}
+                href={`/packages/${itinerary.slug}`}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green px-5 py-3 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-emerald-900 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-200"
+              >
+                <Map size={16} />
+
+                {destinationItineraries.length === 1
+                  ? "View Itinerary"
+                  : itinerary.title}
+
+                <ArrowUpRight size={16} />
+              </Link>
+            ))}
+
             <a
               href={whatsappUrl}
               target="_blank"
@@ -54,12 +72,16 @@ export async function PackagePanel({ pkg }: PackagePanelProps) {
               {t("enquire")}
               <ArrowUpRight size={16} />
             </a>
+
           </div>
         </div>
 
-        <p className="mt-4 border-t border-orange-100 pt-3 text-xs leading-5 text-neutral-500">
-          {t("approxNote")}
-        </p>
+        {destinationItineraries.length === 0 && (
+          <p className="mt-4 border-t border-orange-100 pt-3 text-sm text-neutral-500">
+            Detailed itinerary coming soon. Contact us on WhatsApp for your travel plan.
+          </p>
+        )}
+
       </div>
     </section>
   );
