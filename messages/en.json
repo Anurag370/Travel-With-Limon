@@ -320,10 +320,15 @@
       "state": "West Bengal",
       "description": "Gateway to Bhutan"
     },
-    "bhutan": {
-      "name": "Bhutan",
-      "state": "Bhutan",
-      "description": "Land of the Thunder Dragon"
-    }
+   "bhutan": {
+  "name": "Bhutan",
+  "state": "Bhutan",
+  "description": "Land of the Thunder Dragon"
+},
+"kurseong": {
+  "name": "Kurseong",
+  "state": "West Bengal",
+  "description": "The Land of White Orchids"
+}
   }
 }

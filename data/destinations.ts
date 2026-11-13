@@ -54,4 +54,10 @@ export const destinations: Destination[] = [
     image: "/destinations/bhutan/bh1.jpeg",
     href: "/destinations/bhutan",
   },
+  {
+    id: 9,
+    slug: "kurseong",
+    image: "/destinations/kurseong/ksg5.jpeg",
+    href: "/destinations/kurseong",
+  },
 ];

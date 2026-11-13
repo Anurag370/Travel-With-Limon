@@ -83,4 +83,14 @@ export const destinationGallery: Record<string, DestinationGallery> = {
       "/destinations/bhutan/bh5.jpeg",
     ],
   },
+  kurseong: {
+    cover: "/destinations/kurseong/ksg1.jpeg",
+    images: [ 
+      "/destinations/kurseong/ksg1.jpeg",
+      "/destinations/kurseong/ksg2.jpeg",
+      "/destinations/kurseong/ksg3.jpeg",
+      "/destinations/kurseong/ksg4.jpeg",
+      "/destinations/kurseong/ksg5.jpeg",
+    ],
+  },
 };
