@@ -65,6 +65,13 @@ export const packages: TravelPackage[] = [
     durationNights: 3,
     priceFrom: 15000,
   },
+  {
+    id: 9,
+    destinationSlug: "kurseong",
+    durationDays: 3,
+    durationNights: 2,
+    priceFrom: 7000,
+  },
 ];
 
 export function getPackageByDestination(
