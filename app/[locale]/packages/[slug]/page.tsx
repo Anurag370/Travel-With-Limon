@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
 import { MapPin, PlaneTakeoff } from "lucide-react";
 
 import { Navbar } from "@/components/layout/navbar";
@@ -11,6 +10,8 @@ import { ItineraryHero } from "@/components/packages/itinerary-hero";
 import { ItineraryTimeline } from "@/components/packages/itinerary-timeline";
 import { ItineraryDetails } from "@/components/packages/itinerary-details";
 import { getItineraryBySlug, itineraries } from "@/data/itineraries";
+
+export const instant = false;
 
 interface ItineraryPageProps {
   params: Promise<{

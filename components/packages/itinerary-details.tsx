@@ -27,7 +27,7 @@ export function ItineraryDetails({ itinerary }: ItineraryDetailsProps) {
 
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-white/60">
-                What's included
+                What&apos;s included
               </p>
               <h3 className="font-heading text-xl font-bold">
                 Package Inclusions
