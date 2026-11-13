@@ -22,8 +22,10 @@ const Footer = async () => {
 
             <p className="mt-4 max-w-xs text-sm leading-6 text-white/75">
               {t("tagline")}
+              <span className="block mt-2 text-sm text-brand-orange">
+              Udyam id: <span className=" text-white/50">UDYAM-WB-01-0039508</span>
+            </span>
             </p>
-
             <div className="mt-5">
               <SocialLinks footer />
             </div>

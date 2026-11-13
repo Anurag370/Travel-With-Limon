@@ -24,6 +24,7 @@ export const destinationGallery: Record<string, DestinationGallery> = {
       "/destinations/darjeeling_offbeat/drjoff2.jpeg",
       "/destinations/darjeeling_offbeat/drjoff3.jpeg",
       "/destinations/darjeeling_offbeat/drjoff4.webp",
+      "/destinations/darjeeling_offbeat/drjoff.jpeg",
     ],
   },
 

@@ -9,13 +9,13 @@ export const destinations: Destination[] = [
   {
     id: 1,
     slug: "darjeeling",
-    image: "/destinations/darjeeling/drj4.jpeg",
+    image: "/destinations/darjeeling/drj1.jpeg",
     href: "/destinations/darjeeling",
   },
   {
     id: 2,
     slug: "darjeeling_offbeat",
-    image: "/destinations/darjeeling_offbeat/drjoff1.jpeg",
+    image: "/destinations/darjeeling_offbeat/drjoff3.jpeg",
     href: "/destinations/darjeeling_offbeat",
   },
   {
@@ -45,13 +45,13 @@ export const destinations: Destination[] = [
   {
     id: 7,
     slug: "dooars",
-    image: "/destinations/dooars/doars1.jpeg",
+    image: "/destinations/dooars/doars2.jpeg",
     href: "/destinations/dooars",
   },
   {
     id: 8,
     slug: "bhutan",
-    image: "/destinations/bhutan/bh1.jpeg",
+    image: "/destinations/bhutan/bh2.jpeg",
     href: "/destinations/bhutan",
   },
   {
